@@ -1,0 +1,120 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import CategoryHero from '../../../components/CategoryHero.astro';
+import PhotoSpot from '../../../components/PhotoSpot.astro';
+import PhotoTip from '../../../components/PhotoTip.astro';
+
+const title = "Singapore Architecture Photography Guide";
+const description = "Explore the perfect blend of modern architecture and nature in the garden city.";
+
+const photoSpots = [
+  {
+    title: "Gardens by the Bay",
+    description: "Futuristic Supertree Grove and indoor gardens.",
+    image: "https://images.unsplash.com/photo-1542086490-11a8654691d0",
+    coordinates: "1.2816° N, 103.8636° E",
+    bestTime: "Blue Hour",
+    difficulty: "Easy",
+    crowdLevel: "High"
+  },
+  {
+    title: "Marina Bay Sands",
+    description: "Iconic hotel with infinity pool and observation deck.",
+    image: "https://images.unsplash.com/photo-1532295454114-d7bc89024613",
+    coordinates: "1.2834° N, 103.8607° E",
+    bestTime: "Sunset",
+    difficulty: "Easy",
+    crowdLevel: "High"
+  },
+  {
+    title: "Helix Bridge",
+    description: "DNA-inspired pedestrian bridge with unique lighting.",
+    image: "https://images.unsplash.com/photo-1675154092378-1ca4978ec6a5",
+    coordinates: "1.2867° N, 103.8594° E",
+    bestTime: "Night",
+    difficulty: "Easy",
+    crowdLevel: "Moderate"
+  },
+  {
+    title: "ArtScience Museum",
+    description: "Lotus-shaped museum with reflecting pool.",
+    image: "https://images.unsplash.com/photo-1531986362435-16b427eb9c26",
+    coordinates: "1.2860° N, 103.8593° E",
+    bestTime: "Morning",
+    difficulty: "Easy",
+    crowdLevel: "Moderate"
+  }
+];
+
+const photographyTips = [
+  {
+    title: "Weather Management",
+    content: "High humidity affects gear. Use silica gel packets and weather-sealed equipment.",
+    icon: "💧"
+  },
+  {
+    title: "Timing Tips",
+    content: "Light shows at Marina Bay occur nightly. Check schedules for exact times.",
+    icon: "⏰"
+  },
+  {
+    title: "Composition",
+    content: "Look for leading lines in modern architecture. Use reflections in water features.",
+    icon: "📸"
+  }
+];
+---
+
+<Layout title={title} description={description}>
+  <CategoryHero
+    title={title}
+    description={description}
+    image="https://images.unsplash.com/photo-1542086490-11a8654691d0"
+  />
+
+  <article class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="prose prose-lg max-w-none mb-16">
+      <p class="lead text-xl text-gray-600">
+        Singapore's unique blend of modern architecture, nature, and cultural heritage creates endless photography opportunities.
+      </p>
+      
+      <h2 class="text-3xl font-bold mt-12 mb-6">Prime Photo Locations</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+      {photoSpots.map(spot => (
+        <PhotoSpot {...spot} />
+      ))}
+    </div>
+
+    <h2 class="text-3xl font-bold mb-6">Photography Tips</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+      {photographyTips.map(tip => (
+        <PhotoTip {...tip} />
+      ))}
+    </div>
+
+    <div class="prose prose-lg max-w-none">
+      <h2>Essential Information</h2>
+      <h3>Best Seasons</h3>
+      <ul>
+        <li>February-April for clearer skies</li>
+        <li>July-August for cultural festivals</li>
+        <li>Year-round tropical climate</li>
+      </ul>
+
+      <h3>Equipment Recommendations</h3>
+      <ul>
+        <li>Weather-sealed camera body</li>
+        <li>Wide-angle lens (16-35mm)</li>
+        <li>Neutral density filters</li>
+        <li>Microfiber cloths</li>
+        <li>Lightweight tripod</li>
+      </ul>
+
+      <blockquote>
+        <p>"Singapore is where nature meets architecture in perfect harmony, creating a photographer's paradise."</p>
+      </blockquote>
+    </div>
+  </article>
+</Layout>

@@ -1,0 +1,169 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import CategoryHero from '../../../components/CategoryHero.astro';
+import { getImageWithParams } from '../../../utils/images';
+
+const title = "Travel Stories & Adventures";
+const description = "Immersive travel narratives and photography journals from around the world.";
+
+const stories = [
+  {
+    title: "A Week in the Swiss Alps",
+    description: "Journey through picturesque mountain villages and hidden valleys in Switzerland.",
+    image: "https://images.unsplash.com/photo-1531986362435-16b427eb9c26",
+    date: "2024-03-15",
+    href: "/blog/travel-stories/swiss-alps-journey",
+    category: "Mountain Adventures"
+  },
+  {
+    title: "Lost in Tokyo's Back Streets",
+    description: "Discovering the authentic side of Tokyo beyond the neon lights.",
+    image: "https://images.unsplash.com/photo-1523474438810-b04a2480633c",
+    date: "2024-03-10",
+    href: "/blog/travel-stories/tokyo-backstreets",
+    category: "Urban Exploration"
+  },
+  {
+    title: "Desert Nights in Morocco",
+    description: "Camping under the stars in the Sahara and exploring ancient kasbahs.",
+    image: "https://images.unsplash.com/photo-1532295454114-d7bc89024613",
+    date: "2024-03-05",
+    href: "/blog/travel-stories/morocco-desert-nights",
+    category: "Desert Adventures"
+  },
+  {
+    title: "Island Hopping in Greece",
+    description: "A photographic journey through the Cyclades islands.",
+    image: "https://images.unsplash.com/photo-1611001897293-561e0c30f938",
+    date: "2024-03-01",
+    href: "/blog/travel-stories/greek-islands",
+    category: "Island Life"
+  },
+  {
+    title: "Chasing Waterfalls in Bali",
+    description: "Off-the-beaten-path adventures to Bali's hidden cascades.",
+    image: "https://images.unsplash.com/photo-1675154092378-1ca4978ec6a5",
+    date: "2024-02-25",
+    href: "/blog/travel-stories/bali-waterfalls",
+    category: "Nature Exploration"
+  },
+  {
+    title: "Winter in Iceland",
+    description: "Aurora hunting and ice cave exploration in the land of fire and ice.",
+    image: "https://images.unsplash.com/photo-1669408276432-10cd3a07fe89",
+    date: "2024-02-20",
+    href: "/blog/travel-stories/iceland-winter",
+    category: "Arctic Adventures"
+  }
+];
+
+const categories = [
+  "Mountain Adventures",
+  "Urban Exploration",
+  "Desert Adventures",
+  "Island Life",
+  "Nature Exploration",
+  "Arctic Adventures"
+];
+---
+
+<Layout title={title} description={description}>
+  <CategoryHero
+    title={title}
+    description={description}
+    image="https://images.unsplash.com/photo-1542086490-11a8654691d0"
+  />
+
+  <section class="py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Categories -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold mb-6">Browse by Category</h2>
+        <div class="flex flex-wrap gap-4">
+          {categories.map(category => (
+            <a
+              href={`#${category.toLowerCase().replace(' ', '-')}`}
+              class="px-4 py-2 bg-gray-100 hover:bg-blue-100 rounded-full text-sm font-medium transition-colors"
+            >
+              {category}
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <!-- Featured Stories -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {stories.map(story => (
+          <article class="bg-white rounded-lg shadow-md overflow-hidden">
+            <img 
+              src={getImageWithParams(story.image, 600)}
+              alt={story.title}
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-6">
+              <div class="flex items-center text-sm text-gray-500 mb-2">
+                <time datetime={story.date}>
+                  {new Date(story.date).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                  })}
+                </time>
+                <span class="mx-2">·</span>
+                <span class="text-blue-600 font-medium">{story.category}</span>
+              </div>
+              <h3 class="text-xl font-bold mb-2">
+                <a href={story.href} class="hover:text-blue-600 transition-colors">
+                  {story.title}
+                </a>
+              </h3>
+              <p class="text-gray-600">{story.description}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <!-- Newsletter Section -->
+      <div class="mt-16 bg-blue-50 rounded-xl p-8">
+        <div class="max-w-2xl mx-auto text-center">
+          <h2 class="text-2xl font-bold mb-4">Get Travel Stories in Your Inbox</h2>
+          <p class="text-gray-600 mb-6">
+            Subscribe to our newsletter for weekly travel stories, photography tips, and destination guides.
+          </p>
+          <form class="flex flex-col sm:flex-row gap-4 justify-center">
+            <input
+              type="email"
+              placeholder="Enter your email"
+              class="px-4 py-3 rounded-lg flex-grow max-w-md"
+            />
+            <button
+              type="submit"
+              class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+            >
+              Subscribe
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Coming Soon -->
+      <div class="mt-16">
+        <h2 class="text-2xl font-bold mb-6">Coming Soon</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="font-semibold mb-2">Road Trip Chronicles</h3>
+            <p class="text-gray-600">Epic road trips and photography adventures around the world.</p>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="font-semibold mb-2">Cultural Encounters</h3>
+            <p class="text-gray-600">Stories of meaningful connections and cultural experiences.</p>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="font-semibold mb-2">Hidden Gems Series</h3>
+            <p class="text-gray-600">Discovering off-the-beaten-path destinations.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

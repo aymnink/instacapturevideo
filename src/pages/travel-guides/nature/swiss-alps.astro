@@ -1,0 +1,120 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import CategoryHero from '../../../components/CategoryHero.astro';
+import PhotoSpot from '../../../components/PhotoSpot.astro';
+import PhotoTip from '../../../components/PhotoTip.astro';
+
+const title = "Swiss Alps Photography Guide";
+const description = "Master the art of mountain photography in Switzerland's stunning alpine landscapes.";
+
+const photoSpots = [
+  {
+    title: "Matterhorn from Zermatt",
+    description: "The iconic pyramid-shaped peak reflected in Riffelsee Lake.",
+    image: "https://images.unsplash.com/photo-1531986362435-16b427eb9c26",
+    coordinates: "45.9766° N, 7.6586° E",
+    bestTime: "Sunrise",
+    difficulty: "Moderate",
+    crowdLevel: "High"
+  },
+  {
+    title: "Lauterbrunnen Valley",
+    description: "72 waterfalls cascade down dramatic cliff faces in this U-shaped valley.",
+    image: "https://images.unsplash.com/photo-1542086490-11a8654691d0",
+    coordinates: "46.5937° N, 7.9088° E",
+    bestTime: "Morning",
+    difficulty: "Easy",
+    crowdLevel: "Moderate"
+  },
+  {
+    title: "Lake Lucerne",
+    description: "Crystal clear waters surrounded by snow-capped peaks.",
+    image: "https://images.unsplash.com/photo-1669408276432-10cd3a07fe89",
+    coordinates: "47.0502° N, 8.3093° E",
+    bestTime: "Sunset",
+    difficulty: "Easy",
+    crowdLevel: "Moderate"
+  },
+  {
+    title: "Aletsch Glacier",
+    description: "Europe's largest glacier offering dramatic ice formations.",
+    image: "https://images.unsplash.com/photo-1675154092378-1ca4978ec6a5",
+    coordinates: "46.5000° N, 8.0333° E",
+    bestTime: "Midday",
+    difficulty: "Hard",
+    crowdLevel: "Low"
+  }
+];
+
+const photographyTips = [
+  {
+    title: "Mountain Light",
+    content: "Plan for alpenglow during golden hour. Watch weather patterns for dramatic clouds.",
+    icon: "🌄"
+  },
+  {
+    title: "High Altitude",
+    content: "Protect gear from cold and moisture. Batteries drain faster at altitude.",
+    icon: "❄️"
+  },
+  {
+    title: "Composition",
+    content: "Use foreground elements like flowers or rocks. Include scale references for massive landscapes.",
+    icon: "📸"
+  }
+];
+---
+
+<Layout title={title} description={description}>
+  <CategoryHero
+    title={title}
+    description={description}
+    image="https://images.unsplash.com/photo-1531986362435-16b427eb9c26"
+  />
+
+  <article class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="prose prose-lg max-w-none mb-16">
+      <p class="lead text-xl text-gray-600">
+        The Swiss Alps offer photographers a paradise of jagged peaks, pristine lakes, and dramatic glaciers.
+      </p>
+      
+      <h2 class="text-3xl font-bold mt-12 mb-6">Prime Photo Locations</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+      {photoSpots.map(spot => (
+        <PhotoSpot {...spot} />
+      ))}
+    </div>
+
+    <h2 class="text-3xl font-bold mb-6">Photography Tips</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+      {photographyTips.map(tip => (
+        <PhotoTip {...tip} />
+      ))}
+    </div>
+
+    <div class="prose prose-lg max-w-none">
+      <h2>Essential Information</h2>
+      <h3>Best Seasons</h3>
+      <ul>
+        <li>Summer (June-August) for wildflowers</li>
+        <li>Winter (December-March) for snow scenes</li>
+        <li>Shoulder seasons for dramatic weather</li>
+      </ul>
+
+      <h3>Equipment Recommendations</h3>
+      <ul>
+        <li>Wide-angle lens (14-24mm)</li>
+        <li>Telephoto lens (70-200mm)</li>
+        <li>Sturdy tripod</li>
+        <li>Polarizing filter</li>
+        <li>Weather-sealed gear</li>
+      </ul>
+
+      <blockquote>
+        <p>"The Swiss Alps challenge photographers to capture their immense scale while preserving the delicate details that make each scene unique."</p>
+      </blockquote>
+    </div>
+  </article>
+</Layout>

@@ -1,0 +1,110 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import CategoryHero from '../../../components/CategoryHero.astro';
+import PhotoSpot from '../../../components/PhotoSpot.astro';
+import PhotoTip from '../../../components/PhotoTip.astro';
+
+const title = "Dubai's Best Photo Spots";
+const description = "Discover the most photogenic locations in Dubai, from iconic skyscrapers to desert landscapes.";
+
+const photoSpots = [
+  {
+    title: "Dubai Frame",
+    description: "The world's largest picture frame with views of old and new Dubai.",
+    image: "https://images.unsplash.com/photo-1532295454114-d7bc89024613",
+    coordinates: "25.2352° N, 55.3002° E",
+    bestTime: "Sunset",
+    difficulty: "Easy",
+    crowdLevel: "Moderate"
+  },
+  {
+    title: "Burj Khalifa",
+    description: "World's tallest building with observation decks.",
+    image: "https://images.unsplash.com/photo-1542086490-11a8654691d0",
+    coordinates: "25.1972° N, 55.2744° E",
+    bestTime: "Blue Hour",
+    difficulty: "Easy",
+    crowdLevel: "High"
+  },
+  {
+    title: "Dubai Marina",
+    description: "Modern waterfront with yacht views and skyscrapers.",
+    image: "https://images.unsplash.com/photo-1669408276432-10cd3a07fe89",
+    coordinates: "25.0777° N, 55.1304° E",
+    bestTime: "Night",
+    difficulty: "Easy",
+    crowdLevel: "High"
+  }
+];
+
+const photographyTips = [
+  {
+    title: "Desert Haze",
+    content: "Shoot during winter months for clearer air. Use polarizing filters.",
+    icon: "🌇"
+  },
+  {
+    title: "Night Photography",
+    content: "Use f/8-f/11 for sharp cityscapes. Tripod essential for blue hour.",
+    icon: "🌃"
+  },
+  {
+    title: "Timing",
+    content: "Visit during November-March for best weather and clearest skies.",
+    icon: "📅"
+  }
+];
+---
+
+<Layout title={title} description={description}>
+  <CategoryHero
+    title={title}
+    description={description}
+    image="https://images.unsplash.com/photo-1532295454114-d7bc89024613"
+  />
+
+  <article class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="prose prose-lg max-w-none mb-16">
+      <p class="lead text-xl text-gray-600">
+        Dubai's futuristic skyline and desert landscapes create endless opportunities for unique photography.
+      </p>
+      
+      <h2 class="text-3xl font-bold mt-12 mb-6">Prime Photo Locations</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+      {photoSpots.map(spot => (
+        <PhotoSpot {...spot} />
+      ))}
+    </div>
+
+    <h2 class="text-3xl font-bold mb-6">Photography Tips</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+      {photographyTips.map(tip => (
+        <PhotoTip {...tip} />
+      ))}
+    </div>
+
+    <div class="prose prose-lg max-w-none">
+      <h2>Essential Information</h2>
+      <h3>Best Times to Visit</h3>
+      <ul>
+        <li>November to March for clearest skies</li>
+        <li>December for Dubai Light Festival</li>
+        <li>Avoid summer months (extreme heat)</li>
+      </ul>
+
+      <h3>Equipment Recommendations</h3>
+      <ul>
+        <li>Wide-angle lens (14-24mm)</li>
+        <li>Sturdy tripod</li>
+        <li>Neutral density filters</li>
+        <li>Lens cleaning kit (for desert dust)</li>
+      </ul>
+
+      <blockquote>
+        <p>"Dubai is where modern architecture meets desert mystique, creating endless possibilities for unique photography."</p>
+      </blockquote>
+    </div>
+  </article>
+</Layout>

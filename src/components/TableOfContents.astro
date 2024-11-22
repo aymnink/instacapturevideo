@@ -1,0 +1,28 @@
+---
+interface Props {
+  headings: {
+    text: string;
+    slug: string;
+  }[];
+}
+
+const { headings } = Astro.props;
+---
+
+<div class="bg-gray-50 rounded-lg p-6 mb-8 sticky top-4">
+  <h2 class="text-lg font-semibold mb-4">Table of Contents</h2>
+  <nav>
+    <ul class="space-y-2">
+      {headings.map(heading => (
+        <li>
+          <a
+            href={`#${heading.slug}`}
+            class="text-gray-600 hover:text-blue-600 transition-colors"
+          >
+            {heading.text}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+</div>

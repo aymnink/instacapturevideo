@@ -1,0 +1,71 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import CategoryHero from '../../../components/CategoryHero.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+
+const title = "Complete Guide to Creating Viral Instagram Reels";
+const description = "Master the art of creating engaging Instagram Reels that capture attention and go viral.";
+const publishDate = "2024-03-05";
+
+const breadcrumbs = [
+  { name: "Home", href: "/" },
+  { name: "Blog", href: "/blog" },
+  { name: "Instagram Tips", href: "/blog/instagram-tips" },
+  { name: title, href: "" }
+];
+
+const sections = [
+  {
+    title: "Understanding Reels Algorithm",
+    content: "Learn how Instagram's algorithm promotes Reels and what factors influence visibility."
+  },
+  {
+    title: "Content Planning",
+    content: "Develop a strategy for creating trending, engaging Reels that align with your brand."
+  },
+  {
+    title: "Technical Requirements",
+    content: "Optimize your Reels with the right dimensions, duration, and quality settings."
+  }
+];
+---
+
+<Layout title={title} description={description}>
+  <CategoryHero
+    title={title}
+    description={description}
+    image="https://images.unsplash.com/photo-1611162616305-c69b3396c604"
+  />
+
+  <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <Breadcrumbs paths={breadcrumbs} />
+
+    <div class="mt-8 prose prose-lg max-w-none">
+      <div class="text-sm text-gray-500 mb-8">
+        Published on {new Date(publishDate).toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric'
+        })}
+      </div>
+
+      <p class="lead text-xl text-gray-600 mb-12">
+        Create engaging Reels that capture attention and drive engagement with these expert tips.
+      </p>
+
+      {sections.map(section => (
+        <div class="mb-12">
+          <h2 class="text-2xl font-bold text-gray-900 mb-4">{section.title}</h2>
+          <p class="text-gray-600">{section.content}</p>
+        </div>
+      ))}
+
+      <div class="bg-brand-blue/5 rounded-xl p-8 mt-12">
+        <h2 class="text-xl font-bold text-brand-blue mb-4">Save Inspiration</h2>
+        <p class="text-gray-600">
+          Use InstaCapture to download and save Reels that inspire you for future reference.
+        </p>
+      </div>
+    </div>
+  </article>
+</Layout>

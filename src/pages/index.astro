@@ -1,0 +1,79 @@
+---
+import Layout from '../layouts/Layout.astro';
+import FeaturedPost from '../components/FeaturedPost.astro';
+import PostGrid from '../components/PostGrid.astro';
+
+const title = "InstaCapture - Your Ultimate Photography Destination";
+const description = "Discover breathtaking destinations, hidden gems, and expert travel guides for your next adventure.";
+
+const heroImage = "https://images.unsplash.com/photo-1542086490-11a8654691d0";
+---
+
+<Layout title={title} description={description}>
+  <div class="relative">
+    <!-- Hero Section -->
+    <div class="relative">
+      <div class="absolute inset-0">
+        <img
+          src={`${heroImage}?w=1920&q=80&auto=format&fit=crop`}
+          alt="Beautiful travel destination"
+          class="w-full h-full object-cover"
+        />
+        <div class="absolute inset-0 bg-gradient-to-r from-blue-900/90 to-purple-900/80"></div>
+      </div>
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
+        <h1 class="text-4xl lg:text-6xl font-bold mb-6 leading-tight text-white">
+          Discover the World's Most
+          <span class="block text-yellow-300">Instagram-Worthy Destinations</span>
+        </h1>
+        <p class="text-xl lg:text-2xl mb-8 max-w-2xl text-white/90">
+          Expert travel guides, hidden gems, and photography tips for the modern adventurer.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a href="/blog/instagram-destinations" class="bg-white text-brand-blue px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors">
+            Explore Destinations
+          </a>
+          <a href="/blog/travel-guides" class="bg-transparent border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white/10 transition-colors">
+            View Travel Guides
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Featured Posts Section -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <h2 class="text-3xl font-bold mb-8">Featured Destinations</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <FeaturedPost
+          title="Hidden Gems of Paris"
+          description="Discover Instagram-worthy spots beyond the Eiffel Tower"
+          href="/instagram-destinations/hidden-gems/paris"
+          category="Hidden Gems"
+          image="https://images.unsplash.com/photo-1595039838779-f3780873afdd"
+        />
+        <FeaturedPost
+          title="Tokyo After Dark"
+          description="A photographer's guide to capturing the neon city"
+          href="/travel-guides/city/tokyo"
+          category="City Guides"
+          image="https://images.unsplash.com/photo-1523474438810-b04a2480633c"
+        />
+        <FeaturedPost
+          title="Santorini Sunset Spots"
+          description="The most photogenic locations for sunset shots"
+          href="/instagram-destinations/best-photo-spots/santorini"
+          category="Best Photo Spots"
+          image="https://images.unsplash.com/photo-1611001897293-561e0c30f938"
+        />
+      </div>
+    </section>
+
+    <!-- Latest Posts Grid -->
+    <section class="bg-gray-50 py-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-3xl font-bold mb-8">Latest Adventures</h2>
+        <PostGrid />
+      </div>
+    </section>
+  </div>
+</Layout>

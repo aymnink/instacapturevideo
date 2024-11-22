@@ -1,0 +1,223 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import CategoryHero from '../../../components/CategoryHero.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import { getImageWithParams } from '../../../utils/images';
+
+const title = "Instagram Destinations";
+const description = "Discover the world's most photogenic locations and learn how to capture them perfectly for Instagram.";
+
+const breadcrumbs = [
+  { name: "Home", href: "/" },
+  { name: "Blog", href: "/blog" },
+  { name: "Instagram Destinations", href: "/blog/instagram-destinations" }
+];
+
+const featuredDestinations = [
+  {
+    title: "Santorini's Blue Domes",
+    description: "Master the art of capturing Greece's most iconic photo spots.",
+    image: "https://images.unsplash.com/photo-1611001897293-561e0c30f938",
+    date: "2024-03-15",
+    category: "Europe",
+    href: "/blog/instagram-destinations/santorini"
+  },
+  {
+    title: "Dubai's Hidden Gems",
+    description: "Discover secret photo locations in the city of luxury.",
+    image: "https://images.unsplash.com/photo-1532295454114-d7bc89024613",
+    date: "2024-03-10",
+    category: "Middle East",
+    href: "/blog/instagram-destinations/dubai"
+  },
+  {
+    title: "Tokyo After Dark",
+    description: "A photographer's guide to capturing neon-lit streets.",
+    image: "https://images.unsplash.com/photo-1523474438810-b04a2480633c",
+    date: "2024-03-05",
+    category: "Asia",
+    href: "/blog/instagram-destinations/tokyo"
+  }
+];
+
+const popularDestinations = [
+  {
+    title: "Bali's Instagram Hotspots",
+    description: "From rice terraces to hidden waterfalls, discover Bali's most photogenic spots.",
+    image: "https://images.unsplash.com/photo-1675154092378-1ca4978ec6a5",
+    category: "Asia",
+    href: "/blog/instagram-destinations/bali"
+  },
+  {
+    title: "Paris Hidden Corners",
+    description: "Secret spots and unique angles in the City of Light.",
+    image: "https://images.unsplash.com/photo-1595039838779-f3780873afdd",
+    category: "Europe",
+    href: "/blog/instagram-destinations/paris"
+  },
+  {
+    title: "New York Rooftops",
+    description: "The best locations for stunning NYC skyline shots.",
+    image: "https://images.unsplash.com/photo-1572573309811-48474d1891b7",
+    category: "North America",
+    href: "/blog/instagram-destinations/new-york"
+  }
+];
+
+const upcomingDestinations = [
+  {
+    title: "Iceland's Natural Wonders",
+    description: "From waterfalls to ice caves, capture Iceland's raw beauty.",
+    image: "https://images.unsplash.com/photo-1669408276432-10cd3a07fe89",
+    category: "Europe",
+    href: "/blog/instagram-destinations/iceland"
+  },
+  {
+    title: "Morocco's Colors",
+    description: "A visual journey through Morocco's vibrant cities and desert.",
+    image: "https://images.unsplash.com/photo-1542086490-11a8654691d0",
+    category: "Africa",
+    href: "/blog/instagram-destinations/morocco"
+  }
+];
+
+const regions = [
+  "Europe",
+  "Asia",
+  "North America",
+  "South America",
+  "Africa",
+  "Middle East",
+  "Oceania"
+];
+---
+
+<Layout title={title} description={description}>
+  <CategoryHero
+    title={title}
+    description={description}
+    image="https://images.unsplash.com/photo-1611001897293-561e0c30f938"
+  />
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <Breadcrumbs paths={breadcrumbs} />
+
+    <!-- Regions Filter -->
+    <div class="mt-8 mb-12">
+      <h2 class="text-2xl font-bold mb-6">Browse by Region</h2>
+      <div class="flex flex-wrap gap-4">
+        {regions.map(region => (
+          <a
+            href={`#${region.toLowerCase().replace(' ', '-')}`}
+            class="px-4 py-2 bg-gray-100 hover:bg-brand-blue/10 rounded-full text-sm font-medium transition-colors"
+          >
+            {region}
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <!-- Featured Destinations -->
+    <div class="mb-16">
+      <h2 class="text-2xl font-bold mb-8">Featured Destinations</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {featuredDestinations.map(post => (
+          <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+            <img 
+              src={getImageWithParams(post.image, 600)}
+              alt={post.title}
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-6">
+              <div class="flex items-center text-sm text-gray-500 mb-2">
+                <time datetime={post.date}>
+                  {new Date(post.date).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                  })}
+                </time>
+                <span class="mx-2">·</span>
+                <span class="text-brand-blue font-medium">{post.category}</span>
+              </div>
+              <h3 class="text-xl font-bold mb-2">
+                <a href={post.href} class="hover:text-brand-blue transition-colors">
+                  {post.title}
+                </a>
+              </h3>
+              <p class="text-gray-600">{post.description}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+
+    <!-- Popular Destinations -->
+    <div class="mb-16">
+      <h2 class="text-2xl font-bold mb-8">Popular Destinations</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {popularDestinations.map(post => (
+          <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+            <img 
+              src={getImageWithParams(post.image, 600)}
+              alt={post.title}
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-6">
+              <div class="flex items-center text-sm text-gray-500 mb-2">
+                <span class="text-brand-blue font-medium">{post.category}</span>
+              </div>
+              <h3 class="text-xl font-bold mb-2">
+                <a href={post.href} class="hover:text-brand-blue transition-colors">
+                  {post.title}
+                </a>
+              </h3>
+              <p class="text-gray-600">{post.description}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+
+    <!-- Upcoming Destinations -->
+    <div class="mb-16">
+      <h2 class="text-2xl font-bold mb-8">Coming Soon</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {upcomingDestinations.map(post => (
+          <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+            <img 
+              src={getImageWithParams(post.image, 600)}
+              alt={post.title}
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-6">
+              <div class="flex items-center text-sm text-gray-500 mb-2">
+                <span class="text-brand-blue font-medium">{post.category}</span>
+              </div>
+              <h3 class="text-xl font-bold mb-2">
+                <a href={post.href} class="hover:text-brand-blue transition-colors">
+                  {post.title}
+                </a>
+              </h3>
+              <p class="text-gray-600">{post.description}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+
+    <!-- Photography Tips -->
+    <div class="bg-brand-blue/5 rounded-xl p-8">
+      <h2 class="text-xl font-bold text-brand-blue mb-4">Capture Perfect Instagram Photos</h2>
+      <p class="text-gray-600 mb-6">
+        Learn how to take stunning photos at these destinations with our comprehensive photography guides.
+      </p>
+      <a 
+        href="/blog/photography-tips"
+        class="inline-block bg-brand-blue text-white px-6 py-3 rounded-lg font-semibold hover:bg-brand-blue/90 transition-colors"
+      >
+        View Photography Tips
+      </a>
+    </div>
+  </div>
+</Layout>

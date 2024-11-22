@@ -1,0 +1,104 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import CategoryHero from '../../../components/CategoryHero.astro';
+import PhotoSpot from '../../../components/PhotoSpot.astro';
+import PhotoTip from '../../../components/PhotoTip.astro';
+
+const title = "Capturing Cherry Blossoms in Japan";
+const description = "A photographer's guide to sakura season across Japan.";
+const publishDate = "2024-02-20";
+
+const locations = [
+  {
+    title: "Philosopher's Path, Kyoto",
+    description: "Historic canal lined with cherry trees.",
+    bestTime: "Early morning",
+    tips: "Use the path as a leading line with blossoms framing the shot."
+  },
+  {
+    title: "Chidorigafuchi, Tokyo",
+    description: "Cherry blossoms along the Imperial Palace moat.",
+    bestTime: "Evening for illuminations",
+    tips: "Capture reflections in the water during blue hour."
+  },
+  {
+    title: "Mount Yoshino",
+    description: "Mountain slopes covered in cherry trees.",
+    bestTime: "Mid-morning",
+    tips: "Use telephoto lens to compress layers of blossoms."
+  }
+];
+
+const photographyTips = [
+  {
+    title: "Timing",
+    content: "Follow cherry blossom forecasts. Peak bloom lasts only a few days.",
+    icon: "🌸"
+  },
+  {
+    title: "Weather",
+    content: "Overcast days can enhance colors. Wind can create natural petal falls.",
+    icon: "🌤"
+  },
+  {
+    title: "Composition",
+    content: "Mix close-ups of blossoms with wider architectural shots.",
+    icon: "📸"
+  }
+];
+---
+
+<Layout title={title} description={description}>
+  <CategoryHero
+    title={title}
+    description={description}
+    image="https://images.unsplash.com/photo-1531986362435-16b427eb9c26"
+  />
+
+  <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="prose prose-lg max-w-none">
+      <div class="text-sm text-gray-500 mb-8">
+        Published on {new Date(publishDate).toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric'
+        })}
+      </div>
+
+      <p class="lead">
+        Japan's cherry blossom season transforms the country into a photographer's paradise of pink and white blooms.
+      </p>
+
+      <h2>Prime Locations</h2>
+      {locations.map(location => (
+        <div class="mb-8">
+          <h3>{location.title}</h3>
+          <p>{location.description}</p>
+          <ul>
+            <li><strong>Best time to visit:</strong> {location.bestTime}</li>
+            <li><strong>Photography tips:</strong> {location.tips}</li>
+          </ul>
+        </div>
+      ))}
+
+      <h2>Photography Tips</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        {photographyTips.map(tip => (
+          <PhotoTip {...tip} />
+        ))}
+      </div>
+
+      <h2>Essential Equipment</h2>
+      <ul>
+        <li>Macro lens for blossom details</li>
+        <li>Wide-angle lens for landscapes</li>
+        <li>Polarizing filter</li>
+        <li>Tripod for low-light shots</li>
+      </ul>
+
+      <blockquote>
+        <p>"Cherry blossoms remind us of life's beautiful impermanence, making each photograph more precious."</p>
+      </blockquote>
+    </div>
+  </article>
+</Layout>

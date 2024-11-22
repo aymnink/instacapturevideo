@@ -1,0 +1,120 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import CategoryHero from '../../../components/CategoryHero.astro';
+import { getImageWithParams } from '../../../utils/images';
+
+const title = "Instagram Guides & Tutorials";
+const description = "Expert guides and tutorials for Instagram content creators and photographers.";
+
+const guides = [
+  {
+    title: "How to Download Instagram Videos",
+    description: "Learn the safe and legal ways to download and save Instagram videos for your content creation needs.",
+    image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113",
+    date: "2024-03-20",
+    href: "/blog/instagram-guides/how-to-download-instagram-videos",
+    category: "Tutorial"
+  },
+  {
+    title: "10 Pro Tips for Using Instagram Video Downloaders",
+    description: "Expert tips and tricks for downloading Instagram videos efficiently while maintaining quality.",
+    image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113",
+    date: "2024-03-21",
+    href: "/blog/instagram-guides/instagram-video-downloader-tips",
+    category: "Tips & Tricks"
+  },
+  {
+    title: "Complete Guide to Downloading Instagram Reels",
+    description: "Master the art of downloading and saving Instagram Reels for inspiration and content creation.",
+    image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113",
+    date: "2024-03-22",
+    href: "/blog/instagram-guides/instagram-reels-download-guide",
+    category: "Tutorial"
+  },
+  {
+    title: "10 Most Instagrammable Spots in Santorini",
+    description: "Beyond the blue domes: discovering unique photo locations in Greece's most photogenic island.",
+    image: "https://images.unsplash.com/photo-1611001897293-561e0c30f938",
+    date: "2024-03-15",
+    href: "/blog/instagram-guides/santorini-photo-spots",
+    category: "Photography"
+  },
+  {
+    title: "Ultimate Guide to Bali's Instagram Hotspots",
+    description: "From hidden waterfalls to iconic rice terraces, discover Bali's most photogenic locations.",
+    image: "https://images.unsplash.com/photo-1675154092378-1ca4978ec6a5",
+    date: "2024-03-10",
+    href: "/blog/instagram-guides/bali-hotspots",
+    category: "Photography"
+  },
+  {
+    title: "Instagram Guide to Moroccan Riads",
+    description: "The most photogenic traditional houses and courtyards in Morocco.",
+    image: "https://images.unsplash.com/photo-1542086490-11a8654691d0",
+    date: "2024-02-25",
+    href: "/blog/instagram-guides/moroccan-riads",
+    category: "Photography"
+  }
+];
+---
+
+<Layout title={title} description={description}>
+  <CategoryHero
+    title={title}
+    description={description}
+    image="https://images.unsplash.com/photo-1611162617474-5b21e879e113"
+  />
+
+  <section class="py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {guides.map(guide => (
+          <article class="bg-white rounded-lg shadow-md overflow-hidden">
+            <img 
+              src={getImageWithParams(guide.image, 600)}
+              alt={guide.title}
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-6">
+              <div class="flex items-center text-sm text-gray-500 mb-2">
+                <time datetime={guide.date}>
+                  {new Date(guide.date).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                  })}
+                </time>
+                <span class="mx-2">·</span>
+                <span class="text-blue-600 font-medium">{guide.category}</span>
+              </div>
+              <h3 class="text-xl font-bold mb-2">
+                <a href={guide.href} class="hover:text-blue-600 transition-colors">
+                  {guide.title}
+                </a>
+              </h3>
+              <p class="text-gray-600">{guide.description}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <div class="mt-16 bg-blue-50 rounded-xl p-8">
+        <h2 class="text-2xl font-bold mb-4">More Guides Coming Soon</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="font-semibold mb-2">Instagram Stories Tips</h3>
+            <p class="text-gray-600">Master the art of creating engaging Instagram Stories.</p>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="font-semibold mb-2">Reels Creation Guide</h3>
+            <p class="text-gray-600">Learn to create viral-worthy Instagram Reels.</p>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="font-semibold mb-2">Instagram Analytics</h3>
+            <p class="text-gray-600">Understanding your Instagram metrics and growth.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,57 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import CategoryHero from '../../../components/CategoryHero.astro';
+import DestinationCard from '../../../components/DestinationCard.astro';
+
+const title = "Hidden Gems";
+const description = "Uncover secret spots and lesser-known locations for unique Instagram photos.";
+
+const destinations = [
+  {
+    title: "Hidden Paris",
+    description: "Secret spots in the City of Light that most tourists never discover.",
+    image: "https://images.unsplash.com/photo-1595039838779-f3780873afdd",
+    href: "/instagram-destinations/hidden-gems/paris",
+    location: "Paris, France"
+  },
+  {
+    title: "NYC Rooftop Guide",
+    description: "The best rooftop locations for capturing New York's spectacular skyline.",
+    image: "https://images.unsplash.com/photo-1572573309811-48474d1891b7",
+    href: "/instagram-destinations/hidden-gems/new-york",
+    location: "New York, USA"
+  },
+  {
+    title: "Tokyo Back Alleys",
+    description: "Explore the atmospheric streets of Tokyo's hidden neighborhoods.",
+    image: "https://images.unsplash.com/photo-1523474438810-b04a2480633c",
+    href: "/instagram-destinations/hidden-gems/tokyo",
+    location: "Tokyo, Japan"
+  },
+  {
+    title: "Venice's Secret Canals",
+    description: "Discover the quiet corners of Venice away from the crowds.",
+    image: "https://images.unsplash.com/photo-1531986362435-16b427eb9c26",
+    href: "/instagram-destinations/hidden-gems/venice",
+    location: "Venice, Italy"
+  }
+];
+---
+
+<Layout title={title} description={description}>
+  <CategoryHero
+    title={title}
+    description={description}
+    image="https://images.unsplash.com/photo-1595039838779-f3780873afdd"
+  />
+
+  <section class="py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {destinations.map(destination => (
+          <DestinationCard {...destination} />
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

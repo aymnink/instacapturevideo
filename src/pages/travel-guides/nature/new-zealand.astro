@@ -1,0 +1,120 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import CategoryHero from '../../../components/CategoryHero.astro';
+import PhotoSpot from '../../../components/PhotoSpot.astro';
+import PhotoTip from '../../../components/PhotoTip.astro';
+
+const title = "New Zealand's South Island Photography Guide";
+const description = "Capture the dramatic landscapes of Aotearoa, from Milford Sound to Mount Cook.";
+
+const photoSpots = [
+  {
+    title: "Milford Sound",
+    description: "Dramatic fiord with Mitre Peak rising from the water.",
+    image: "https://images.unsplash.com/photo-1542086490-11a8654691d0",
+    coordinates: "44.6414° S, 167.8974° E",
+    bestTime: "Sunrise/Rainy Days",
+    difficulty: "Easy",
+    crowdLevel: "High"
+  },
+  {
+    title: "Mount Cook",
+    description: "New Zealand's highest peak reflected in Hooker Lake.",
+    image: "https://images.unsplash.com/photo-1675154092378-1ca4978ec6a5",
+    coordinates: "43.5946° S, 170.1417° E",
+    bestTime: "Sunrise",
+    difficulty: "Moderate",
+    crowdLevel: "Moderate"
+  },
+  {
+    title: "Wanaka Tree",
+    description: "Lone willow tree growing in Lake Wanaka.",
+    image: "https://images.unsplash.com/photo-1669408276432-10cd3a07fe89",
+    coordinates: "44.7000° S, 169.1500° E",
+    bestTime: "Sunrise",
+    difficulty: "Easy",
+    crowdLevel: "High"
+  },
+  {
+    title: "Roys Peak",
+    description: "Panoramic views over Lake Wanaka and Mount Aspiring.",
+    image: "https://images.unsplash.com/photo-1531986362435-16b427eb9c26",
+    coordinates: "44.7000° S, 169.0500° E",
+    bestTime: "Sunrise",
+    difficulty: "Hard",
+    crowdLevel: "Moderate"
+  }
+];
+
+const photographyTips = [
+  {
+    title: "Weather Planning",
+    content: "Weather changes rapidly. Always check forecasts and bring rain protection.",
+    icon: "🌦"
+  },
+  {
+    title: "Hiking Tips",
+    content: "Many locations require hiking. Plan for extra time and carry emergency gear.",
+    icon: "🥾"
+  },
+  {
+    title: "Composition",
+    content: "Use native plants for foreground interest. Include people for scale in vast landscapes.",
+    icon: "📸"
+  }
+];
+---
+
+<Layout title={title} description={description}>
+  <CategoryHero
+    title={title}
+    description={description}
+    image="https://images.unsplash.com/photo-1542086490-11a8654691d0"
+  />
+
+  <article class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="prose prose-lg max-w-none mb-16">
+      <p class="lead text-xl text-gray-600">
+        New Zealand's South Island offers photographers an incredible diversity of landscapes, from coastal fiords to alpine peaks.
+      </p>
+      
+      <h2 class="text-3xl font-bold mt-12 mb-6">Prime Photo Locations</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+      {photoSpots.map(spot => (
+        <PhotoSpot {...spot} />
+      ))}
+    </div>
+
+    <h2 class="text-3xl font-bold mb-6">Photography Tips</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+      {photographyTips.map(tip => (
+        <PhotoTip {...tip} />
+      ))}
+    </div>
+
+    <div class="prose prose-lg max-w-none">
+      <h2>Essential Information</h2>
+      <h3>Best Seasons</h3>
+      <ul>
+        <li>Summer (December-February) for lupins</li>
+        <li>Autumn (March-May) for fall colors</li>
+        <li>Winter (June-August) for snow-capped peaks</li>
+      </ul>
+
+      <h3>Equipment Recommendations</h3>
+      <ul>
+        <li>Weather-sealed camera body</li>
+        <li>Wide-angle lens (16-35mm)</li>
+        <li>Telephoto lens (70-200mm)</li>
+        <li>Neutral density filters</li>
+        <li>Sturdy tripod</li>
+      </ul>
+
+      <blockquote>
+        <p>"New Zealand's landscapes have a way of making photographers feel small while inspiring them to capture something grand."</p>
+      </blockquote>
+    </div>
+  </article>
+</Layout>

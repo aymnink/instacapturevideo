@@ -1,0 +1,98 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import CategoryHero from '../../../components/CategoryHero.astro';
+import PhotoSpot from '../../../components/PhotoSpot.astro';
+import PhotoTip from '../../../components/PhotoTip.astro';
+
+const title = "Dubai's Hidden Photo Spots";
+const description = "Discover secret locations for unique Dubai skyline shots beyond the obvious.";
+const publishDate = "2024-03-01";
+
+const spots = [
+  {
+    title: "Al Qudra Lakes",
+    description: "Desert oasis with perfect reflection shots of the sunset.",
+    bestTime: "Sunrise or Sunset",
+    tips: "Use a wide-angle lens and bring a tripod for reflection shots."
+  },
+  {
+    title: "Al Fahidi Historical District",
+    description: "Traditional wind towers and narrow alleyways.",
+    bestTime: "Early Morning",
+    tips: "Look for interesting shadows and patterns in the architecture."
+  },
+  {
+    title: "Dubai Design District",
+    description: "Modern architecture and unique installations.",
+    bestTime: "Late Afternoon",
+    tips: "Focus on geometric patterns and reflections."
+  }
+];
+
+const photographyTips = [
+  {
+    title: "Desert Photography",
+    content: "Use a polarizing filter to enhance sky contrast and manage glare.",
+    icon: "🏜️"
+  },
+  {
+    title: "Urban Exploration",
+    content: "Look for unique angles and reflections in modern architecture.",
+    icon: "🏙️"
+  }
+];
+---
+
+<Layout title={title} description={description}>
+  <CategoryHero
+    title={title}
+    description={description}
+    image="https://images.unsplash.com/photo-1532295454114-d7bc89024613"
+  />
+
+  <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="prose prose-lg max-w-none">
+      <div class="text-sm text-gray-500 mb-8">
+        Published on {new Date(publishDate).toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric'
+        })}
+      </div>
+
+      <p class="lead">
+        While Dubai's famous landmarks are spectacular, the city offers many hidden gems for unique photography opportunities.
+      </p>
+
+      <h2>Hidden Locations</h2>
+      {spots.map(spot => (
+        <div class="mb-8">
+          <h3>{spot.title}</h3>
+          <p>{spot.description}</p>
+          <ul>
+            <li><strong>Best time to visit:</strong> {spot.bestTime}</li>
+            <li><strong>Photography tips:</strong> {spot.tips}</li>
+          </ul>
+        </div>
+      ))}
+
+      <h2>Photography Tips</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        {photographyTips.map(tip => (
+          <PhotoTip {...tip} />
+        ))}
+      </div>
+
+      <h2>Essential Information</h2>
+      <ul>
+        <li>Best season: November to March</li>
+        <li>Photography permits required for some locations</li>
+        <li>Respect local customs and privacy</li>
+      </ul>
+
+      <blockquote>
+        <p>"The real Dubai reveals itself in the spaces between the skyscrapers."</p>
+      </blockquote>
+    </div>
+  </article>
+</Layout>

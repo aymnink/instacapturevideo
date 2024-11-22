@@ -1,0 +1,104 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CategoryHero from '../components/CategoryHero.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+
+const title = "Privacy Policy";
+const description = "Learn how we protect your privacy and handle your data at InstaCapture.";
+
+const breadcrumbs = [
+  { name: "Home", href: "/" },
+  { name: "Privacy Policy", href: "/privacy" }
+];
+
+const sections = [
+  {
+    title: "Introduction",
+    content: "At Insta Capture, we are committed to protecting the privacy of our users. This Privacy Policy explains the types of information that we collect and how we use and safeguard it. By using Insta Capture, you agree to the practices outlined in this policy."
+  },
+  {
+    title: "Log Files",
+    content: [
+      "Like many other websites, Insta Capture follows a standard practice of using log files. These files log visitors when they access our website, and this is a common procedure for hosting services. The information collected by log files may include:",
+      [
+        "Internet Protocol (IP) addresses",
+        "Browser type",
+        "Internet Service Provider (ISP)",
+        "Date and time stamp",
+        "Referring/exit pages",
+        "The number of clicks"
+      ]
+    ]
+  },
+  {
+    title: "Cookies and Website Tracking",
+    content: "Insta Capture may use cookies to enhance your browsing experience. Cookies help us understand how you interact with our website and allow us to improve its functionality. You can disable cookies through your browser settings; however, this may affect your ability to access certain features of the website."
+  },
+  {
+    title: "Third-Party Services",
+    content: "Insta Capture may collaborate with third-party service providers to display content or advertisements. These third parties may use tracking technologies such as cookies, JavaScript, or web beacons to serve personalized content or measure the effectiveness of their campaigns. Please note that Insta Capture does not have control over the cookies or technologies used by third parties."
+  },
+  {
+    title: "Third-Party Privacy Policies",
+    content: "Insta Capture's Privacy Policy does not cover third-party websites or services that may be linked to or advertised on our site. We recommend reviewing the privacy policies of those third parties to understand how they handle your data."
+  },
+  {
+    title: "Agreement",
+    content: "By using Insta Capture, you consent to the collection and use of information as outlined in this Privacy Policy. You also agree to our terms and conditions, which govern your use of the website and its services."
+  }
+];
+---
+
+<Layout title={title} description={description}>
+  <CategoryHero
+    title={title}
+    description={description}
+    image="https://images.unsplash.com/photo-1611162617474-5b21e879e113"
+  />
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <Breadcrumbs paths={breadcrumbs} />
+    
+    <div class="mt-8 bg-white rounded-lg shadow-lg p-8">
+      <div class="prose prose-lg max-w-none">
+        <p class="text-lg text-gray-600 mb-8">
+          Last updated: {new Date().toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+          })}
+        </p>
+
+        {sections.map((section, index) => (
+          <div class="mb-12">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">{section.title}</h2>
+            {Array.isArray(section.content) ? (
+              <div class="space-y-4">
+                {section.content.map((item, i) => 
+                  Array.isArray(item) ? (
+                    <ul class="list-disc pl-6 space-y-2">
+                      {item.map(bullet => (
+                        <li class="text-gray-600">{bullet}</li>
+                      ))}
+                    </ul>
+                  ) : (
+                    <p class="text-gray-600">{item}</p>
+                  )
+                )}
+              </div>
+            ) : (
+              <p class="text-gray-600">{section.content}</p>
+            )}
+          </div>
+        ))}
+
+        <div class="mt-16 bg-brand-blue/5 rounded-xl p-8">
+          <h2 class="text-xl font-bold text-brand-blue mb-4">Questions About Our Privacy Policy?</h2>
+          <p class="text-gray-600">
+            If you have any questions or concerns about our privacy practices, please don't hesitate to contact us.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>

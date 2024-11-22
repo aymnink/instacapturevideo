@@ -1,0 +1,120 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import CategoryHero from '../../../components/CategoryHero.astro';
+import PhotoSpot from '../../../components/PhotoSpot.astro';
+import PhotoTip from '../../../components/PhotoTip.astro';
+
+const title = "Bali's Hidden Waterfalls Photography Guide";
+const description = "Discover and capture the most photogenic waterfalls in Bali, from popular cascades to secret spots.";
+
+const photoSpots = [
+  {
+    title: "Sekumpul Waterfall",
+    description: "The crown jewel of Bali's waterfalls, featuring multiple cascades.",
+    image: "https://images.unsplash.com/photo-1675154092378-1ca4978ec6a5",
+    coordinates: "8.1827° S, 115.1934° E",
+    bestTime: "Early Morning",
+    difficulty: "Moderate",
+    crowdLevel: "Low"
+  },
+  {
+    title: "GitGit Waterfall",
+    description: "Twin waterfalls surrounded by lush tropical forest.",
+    image: "https://images.unsplash.com/photo-1669408276432-10cd3a07fe89",
+    coordinates: "8.1827° S, 115.1934° E",
+    bestTime: "Morning",
+    difficulty: "Moderate",
+    crowdLevel: "Moderate"
+  },
+  {
+    title: "Tibumana Waterfall",
+    description: "Hidden gem with perfect symmetry and jungle frame.",
+    image: "https://images.unsplash.com/photo-1542086490-11a8654691d0",
+    coordinates: "8.4423° S, 115.4108° E",
+    bestTime: "Early Morning",
+    difficulty: "Easy",
+    crowdLevel: "Low"
+  },
+  {
+    title: "Nungnung Waterfall",
+    description: "Powerful 50-meter cascade with dramatic atmosphere.",
+    image: "https://images.unsplash.com/photo-1531986362435-16b427eb9c26",
+    coordinates: "8.3227° S, 115.1934° E",
+    bestTime: "Morning",
+    difficulty: "Hard",
+    crowdLevel: "Low"
+  }
+];
+
+const photographyTips = [
+  {
+    title: "Long Exposure Settings",
+    content: "Use ND filters and slow shutter speeds (1/2 sec to 2 sec) for silky water effects.",
+    icon: "📸"
+  },
+  {
+    title: "Best Lighting",
+    content: "Early morning provides soft light and fewer crowds. Avoid harsh midday sun.",
+    icon: "🌅"
+  },
+  {
+    title: "Equipment Protection",
+    content: "Bring rain covers and microfiber cloths. Watch out for water spray on lens.",
+    icon: "💧"
+  }
+];
+---
+
+<Layout title={title} description={description}>
+  <CategoryHero
+    title={title}
+    description={description}
+    image="https://images.unsplash.com/photo-1675154092378-1ca4978ec6a5"
+  />
+
+  <article class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="prose prose-lg max-w-none mb-16">
+      <p class="lead text-xl text-gray-600">
+        Bali's waterfalls offer photographers endless opportunities to capture the raw beauty of nature.
+      </p>
+      
+      <h2 class="text-3xl font-bold mt-12 mb-6">Featured Waterfalls</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+      {photoSpots.map(spot => (
+        <PhotoSpot {...spot} />
+      ))}
+    </div>
+
+    <h2 class="text-3xl font-bold mb-6">Photography Tips</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+      {photographyTips.map(tip => (
+        <PhotoTip {...tip} />
+      ))}
+    </div>
+
+    <div class="prose prose-lg max-w-none">
+      <h2>Essential Information</h2>
+      <h3>Best Seasons</h3>
+      <ul>
+        <li>Dry season (April to October) for easier access</li>
+        <li>Wet season for maximum water flow</li>
+        <li>Shoulder seasons for balanced conditions</li>
+      </ul>
+
+      <h3>Equipment Recommendations</h3>
+      <ul>
+        <li>Weather-sealed camera body</li>
+        <li>Wide-angle lens (16-35mm)</li>
+        <li>Neutral density filters</li>
+        <li>Sturdy tripod</li>
+        <li>Waterproof camera bag</li>
+      </ul>
+
+      <blockquote>
+        <p>"Each waterfall in Bali tells its own story through light, motion, and the surrounding jungle."</p>
+      </blockquote>
+    </div>
+  </article>
+</Layout>

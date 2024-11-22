@@ -1,0 +1,125 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import CategoryHero from '../../../components/CategoryHero.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import TableOfContents from '../../../components/TableOfContents.astro';
+
+const title = "Lost in Tokyo's Back Streets";
+const description = "Discovering the authentic side of Tokyo beyond the neon lights.";
+const publishDate = "2024-03-10";
+
+const breadcrumbs = [
+  { name: "Blog", href: "/blog" },
+  { name: "Travel Stories", href: "/blog/travel-stories" },
+  { name: title, href: "" }
+];
+
+const tableOfContents = [
+  { text: "Finding Hidden Tokyo", slug: "finding-hidden-tokyo" },
+  { text: "Yanaka: Old Tokyo's Heart", slug: "yanaka-old-tokyo" },
+  { text: "Shimokitazawa Adventures", slug: "shimokitazawa-adventures" },
+  { text: "Local Food Discoveries", slug: "local-food-discoveries" },
+  { text: "Photography Tips", slug: "photography-tips" },
+  { text: "Practical Information", slug: "practical-information" }
+];
+---
+
+<Layout title={title} description={description}>
+  <Breadcrumbs paths={breadcrumbs} />
+  
+  <CategoryHero
+    title={title}
+    description={description}
+    image="https://images.unsplash.com/photo-1523474438810-b04a2480633c"
+  />
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="lg:grid lg:grid-cols-4 lg:gap-8">
+      <!-- Table of Contents - Desktop -->
+      <div class="hidden lg:block">
+        <div class="sticky top-4">
+          <TableOfContents headings={tableOfContents} />
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="lg:col-span-3">
+        <article class="prose prose-lg max-w-none">
+          <div class="text-sm text-gray-500 mb-8">
+            Published on {new Date(publishDate).toLocaleDateString('en-US', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric'
+            })}
+          </div>
+
+          <p class="lead text-xl">
+            Beyond Tokyo's famous districts lies a network of quiet neighborhoods where traditional life continues unchanged. Join me as we explore the hidden corners of this fascinating city.
+          </p>
+
+          <h2 id="finding-hidden-tokyo">Finding Hidden Tokyo</h2>
+          <p>
+            The key to discovering Tokyo's authentic side is to venture away from the major stations. Each neighborhood has its own shotengai (shopping street) and local shrines that reveal daily life in the metropolis.
+          </p>
+
+          <h2 id="yanaka-old-tokyo">Yanaka: Old Tokyo's Heart</h2>
+          <p>
+            Yanaka survived the earthquakes and wars that reshaped much of Tokyo, preserving a slice of old Edo. Its winding streets are lined with traditional houses, artisan workshops, and small temples.
+          </p>
+
+          <blockquote>
+            <p>"In Yanaka's quiet alleys, you can still hear the echoes of old Tokyo."</p>
+          </blockquote>
+
+          <h2 id="shimokitazawa-adventures">Shimokitazawa Adventures</h2>
+          <p>
+            This bohemian neighborhood is a maze of vintage shops, indie cafes, and tiny music venues. The absence of major chains and narrow car-free streets create an intimate atmosphere perfect for street photography.
+          </p>
+
+          <h2 id="local-food-discoveries">Local Food Discoveries</h2>
+          <p>
+            Away from the Michelin-starred restaurants, we found family-run izakayas serving home-style cooking, street vendors perfecting single dishes for decades, and morning markets with seasonal specialties.
+          </p>
+
+          <h2 id="photography-tips">Photography Tips</h2>
+          <ul>
+            <li>Use a small, discreet camera to blend in</li>
+            <li>Early morning provides empty streets and beautiful light</li>
+            <li>Focus on details: sliding doors, shop curtains, potted plants</li>
+            <li>Respect privacy and ask permission for portraits</li>
+          </ul>
+
+          <h2 id="practical-information">Practical Information</h2>
+          <h3>Best Time to Visit</h3>
+          <ul>
+            <li>Spring (March-May) for cherry blossoms</li>
+            <li>Fall (October-November) for autumn colors</li>
+            <li>Early morning for empty streets</li>
+          </ul>
+
+          <h3>Getting Around</h3>
+          <ul>
+            <li>Get a rechargeable IC card for trains</li>
+            <li>Download offline maps</li>
+            <li>Consider renting a bicycle</li>
+          </ul>
+
+          <h3>Photography Equipment</h3>
+          <ul>
+            <li>35mm or 50mm prime lens</li>
+            <li>Fast aperture for low light</li>
+            <li>Small camera bag</li>
+            <li>Extra batteries</li>
+          </ul>
+
+          <div class="bg-blue-50 p-6 rounded-lg mt-8">
+            <h3 class="text-xl font-bold mb-4">Want More Tokyo Tips?</h3>
+            <p>
+              Check out our complete <a href="/travel-guides/city/tokyo">Tokyo Photography Guide</a> for more locations and technical advice.
+            </p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</Layout>

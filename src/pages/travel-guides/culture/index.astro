@@ -1,0 +1,64 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import CategoryHero from '../../../components/CategoryHero.astro';
+import DestinationCard from '../../../components/DestinationCard.astro';
+
+const title = "Cultural Photography Guides";
+const description = "Document authentic cultural moments and traditions around the world.";
+
+const destinations = [
+  {
+    title: "Morocco's Markets",
+    description: "Capturing the vibrant colors of Marrakech's souks.",
+    image: "https://images.unsplash.com/photo-1532295454114-d7bc89024613",
+    href: "/travel-guides/culture/morocco",
+    location: "Morocco"
+  },
+  {
+    title: "Indian Festivals",
+    description: "A photographer's guide to India's colorful celebrations.",
+    image: "https://images.unsplash.com/photo-1542086490-11a8654691d0",
+    href: "/travel-guides/culture/india",
+    location: "India"
+  },
+  {
+    title: "Thai Temples",
+    description: "Capturing Buddhist architecture and traditions.",
+    image: "https://images.unsplash.com/photo-1669408276432-10cd3a07fe89",
+    href: "/travel-guides/culture/thailand",
+    location: "Thailand"
+  },
+  {
+    title: "Peruvian Traditions",
+    description: "Documenting ancient Incan culture and customs.",
+    image: "https://images.unsplash.com/photo-1675154092378-1ca4978ec6a5",
+    href: "/travel-guides/culture/peru",
+    location: "Peru"
+  },
+  {
+    title: "Japanese Festivals",
+    description: "From matsuri to traditional ceremonies.",
+    image: "https://images.unsplash.com/photo-1531986362435-16b427eb9c26",
+    href: "/travel-guides/culture/japan",
+    location: "Japan"
+  }
+];
+---
+
+<Layout title={title} description={description}>
+  <CategoryHero
+    title={title}
+    description={description}
+    image="https://images.unsplash.com/photo-1532295454114-d7bc89024613"
+  />
+
+  <section class="py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {destinations.map(destination => (
+          <DestinationCard {...destination} />
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

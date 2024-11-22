@@ -1,0 +1,128 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import CategoryHero from '../../../components/CategoryHero.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import TableOfContents from '../../../components/TableOfContents.astro';
+
+const title = "Winter in Iceland";
+const description = "Aurora hunting and ice cave exploration in the land of fire and ice.";
+const publishDate = "2024-02-20";
+
+const breadcrumbs = [
+  { name: "Blog", href: "/blog" },
+  { name: "Travel Stories", href: "/blog/travel-stories" },
+  { name: title, href: "" }
+];
+
+const tableOfContents = [
+  { text: "Preparing for Winter", slug: "preparing-for-winter" },
+  { text: "Aurora Adventures", slug: "aurora-adventures" },
+  { text: "Ice Cave Exploration", slug: "ice-cave-exploration" },
+  { text: "Diamond Beach", slug: "diamond-beach" },
+  { text: "Winter Photography Tips", slug: "winter-photography-tips" },
+  { text: "Essential Information", slug: "essential-information" }
+];
+---
+
+<Layout title={title} description={description}>
+  <Breadcrumbs paths={breadcrumbs} />
+  
+  <CategoryHero
+    title={title}
+    description={description}
+    image="https://images.unsplash.com/photo-1669408276432-10cd3a07fe89"
+  />
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="lg:grid lg:grid-cols-4 lg:gap-8">
+      <!-- Table of Contents - Desktop -->
+      <div class="hidden lg:block">
+        <div class="sticky top-4">
+          <TableOfContents headings={tableOfContents} />
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="lg:col-span-3">
+        <article class="prose prose-lg max-w-none">
+          <div class="text-sm text-gray-500 mb-8">
+            Published on {new Date(publishDate).toLocaleDateString('en-US', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric'
+            })}
+          </div>
+
+          <p class="lead text-xl">
+            Winter transforms Iceland into a photographer's paradise of ice caves, northern lights, and pristine snow-covered landscapes. Join me on a journey through Iceland's most magical season.
+          </p>
+
+          <h2 id="preparing-for-winter">Preparing for Winter</h2>
+          <p>
+            Visiting Iceland in winter requires careful preparation. The days are short, temperatures hover around freezing, and weather conditions can change rapidly. But these challenges are rewarded with unique photography opportunities unavailable in other seasons.
+          </p>
+
+          <h2 id="aurora-adventures">Aurora Adventures</h2>
+          <p>
+            The northern lights dance across Iceland's winter skies, creating otherworldly displays of green, purple, and sometimes red. We spent nights chasing aurora forecasts, finding perfect foregrounds, and waiting patiently in the cold for the show to begin.
+          </p>
+
+          <blockquote>
+            <p>"There's nothing quite like watching the aurora dance above Iceland's snow-covered landscapes."</p>
+          </blockquote>
+
+          <h2 id="ice-cave-exploration">Ice Cave Exploration</h2>
+          <p>
+            Vatnajökull's ice caves offer photographers a glimpse into the heart of Europe's largest glacier. The blue ice formations, created by centuries of compression, create abstract patterns and stunning light play.
+          </p>
+
+          <h2 id="diamond-beach">Diamond Beach</h2>
+          <p>
+            Winter brings massive ice blocks to Diamond Beach, where they contrast beautifully with the black sand. The low winter sun creates perfect conditions for capturing the ice's crystalline structure.
+          </p>
+
+          <h2 id="winter-photography-tips">Winter Photography Tips</h2>
+          <ul>
+            <li>Keep spare batteries warm in inside pockets</li>
+            <li>Use hand warmers for long exposures</li>
+            <li>Protect gear from snow and moisture</li>
+            <li>Bring microfiber cloths for lens cleaning</li>
+            <li>Use neutral density filters for ice and snow</li>
+          </ul>
+
+          <h2 id="essential-information">Essential Information</h2>
+          <h3>Best Times for Winter Visit</h3>
+          <ul>
+            <li>December-February for darkest skies</li>
+            <li>November-March for ice caves</li>
+            <li>February-March for longer days</li>
+          </ul>
+
+          <h3>Photography Equipment</h3>
+          <ul>
+            <li>Weather-sealed camera body</li>
+            <li>Wide-angle lens for aurora (14-24mm)</li>
+            <li>Standard zoom (24-70mm)</li>
+            <li>Sturdy tripod with spike feet</li>
+            <li>Remote shutter release</li>
+          </ul>
+
+          <h3>Aurora Photography Settings</h3>
+          <ul>
+            <li>ISO 1600-3200</li>
+            <li>f/2.8 or wider</li>
+            <li>15-30 second exposures</li>
+            <li>Manual focus set to infinity</li>
+          </ul>
+
+          <div class="bg-blue-50 p-6 rounded-lg mt-8">
+            <h3 class="text-xl font-bold mb-4">Planning Your Iceland Winter Trip?</h3>
+            <p>
+              Check out our detailed <a href="/blog/photography-tips/northern-lights-iceland">Northern Lights Photography Guide</a> for more technical tips and location advice.
+            </p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</Layout>

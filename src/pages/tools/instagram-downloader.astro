@@ -1,0 +1,210 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CategoryHero from '../../components/CategoryHero.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+
+const title = "Instagram Media Downloader";
+const description = "Download Instagram photos, videos, and IGTV content easily and securely with InstaCapture.";
+
+const breadcrumbs = [
+  { name: "Home", href: "/" },
+  { name: "Tools", href: "/tools" },
+  { name: "Instagram Downloader", href: "/tools/instagram-downloader" }
+];
+---
+
+<Layout title={title} description={description}>
+  <CategoryHero
+    title={title}
+    description={description}
+    image="https://images.unsplash.com/photo-1611162617474-5b21e879e113"
+  />
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <Breadcrumbs paths={breadcrumbs} />
+
+    <!-- Description Section -->
+    <div class="mb-12 text-center max-w-3xl mx-auto">
+      <p class="text-lg text-gray-700 leading-relaxed">
+        Insta Capture© is the ultimate Instagram downloader for video editors, creators, and digital professionals. Easily download Instagram videos, Reels, photos, IGTV, and carousels—all in one place. With Insta Capture, quickly save, organize, and manage high-quality Instagram content for your next project. Fast, simple, and efficient.
+      </p>
+    </div>
+
+    <!-- Download Form -->
+    <div class="bg-white rounded-lg shadow-lg p-6 md:p-8">
+      <form id="downloadForm" class="space-y-6">
+        <div>
+          <label for="postUrl" class="block text-sm font-medium text-gray-700 mb-2">
+            Instagram Post URL
+          </label>
+          <input
+            type="url"
+            id="postUrl"
+            name="postUrl"
+            required
+            placeholder="https://www.instagram.com/p/..."
+            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-blue focus:border-brand-blue"
+          />
+        </div>
+
+        <button
+          type="submit"
+          class="w-full bg-brand-blue text-white px-6 py-3 rounded-lg font-semibold hover:bg-brand-blue/90 transition-colors"
+        >
+          Download Media
+        </button>
+      </form>
+
+      <div id="result" class="mt-8 hidden">
+        <div class="border-t border-gray-200 pt-8">
+          <h3 class="text-lg font-semibold mb-4">Download Options</h3>
+          <div id="downloadOptions" class="space-y-4"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- How to Download Section -->
+    <div class="mt-16 border-t border-gray-200 pt-12">
+      <h2 class="text-2xl font-bold mb-8 text-center">How to Download Using Insta Capture</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="text-center">
+          <div class="bg-brand-blue/5 rounded-lg p-6 mb-4">
+            <img src="/images/step1.png" alt="Step 1" class="mx-auto mb-4 h-32 w-auto object-contain" />
+            <h3 class="font-semibold text-brand-blue">Step 1</h3>
+            <p class="text-gray-600">Open the video on Instagram</p>
+          </div>
+        </div>
+        <div class="text-center">
+          <div class="bg-brand-blue/5 rounded-lg p-6 mb-4">
+            <img src="/images/step2.png" alt="Step 2" class="mx-auto mb-4 h-32 w-auto object-contain" />
+            <h3 class="font-semibold text-brand-blue">Step 2</h3>
+            <p class="text-gray-600">Click on the three dots and choose Copy Link</p>
+          </div>
+        </div>
+        <div class="text-center">
+          <div class="bg-brand-blue/5 rounded-lg p-6 mb-4">
+            <img src="/images/step3.png" alt="Step 3" class="mx-auto mb-4 h-32 w-auto object-contain" />
+            <h3 class="font-semibold text-brand-blue">Step 3</h3>
+            <p class="text-gray-600">Paste the URL and hit the download icon</p>
+          </div>
+        </div>
+        <div class="text-center">
+          <div class="bg-brand-blue/5 rounded-lg p-6 mb-4">
+            <img src="/images/step4.png" alt="Step 4" class="mx-auto mb-4 h-32 w-auto object-contain" />
+            <h3 class="font-semibold text-brand-blue">Step 4</h3>
+            <p class="text-gray-600">Click on Download to start downloading</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <div class="mt-16 border-t border-gray-200 pt-12">
+      <h2 class="text-2xl font-bold mb-8">Common Questions</h2>
+      <div class="space-y-6">
+        <div class="bg-gray-50 rounded-lg p-6">
+          <h3 class="font-semibold text-lg mb-2">What is an Instagram Downloader?</h3>
+          <p class="text-gray-600">An Instagram downloader is an online tool that allows users to easily download Instagram photos, videos, and IGTV content. It's designed to help users save media for future use, whether for personal reference or professional purposes.</p>
+        </div>
+        <div class="bg-gray-50 rounded-lg p-6">
+          <h3 class="font-semibold text-lg mb-2">Do I Need to Sign In with My Instagram Account?</h3>
+          <p class="text-gray-600">No, you don't need to log in with your Instagram account to use Insta Capture. Our tool does not require any personal information, allowing you to download content from Instagram securely and anonymously.</p>
+        </div>
+        <div class="bg-gray-50 rounded-lg p-6">
+          <h3 class="font-semibold text-lg mb-2">Is it Safe to Download Content from Instagram?</h3>
+          <p class="text-gray-600">Yes, downloading content via Insta Capture is safe. We do not store or misuse any downloaded content.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<script>
+interface MediaItem {
+  type: 'image' | 'video';
+  url: string;
+  thumbnail?: string;
+}
+
+class InstagramDownloader {
+  private form: HTMLFormElement;
+  private result: HTMLElement;
+  private downloadOptions: HTMLElement;
+
+  constructor() {
+    this.form = document.getElementById('downloadForm') as HTMLFormElement;
+    this.result = document.getElementById('result') as HTMLElement;
+    this.downloadOptions = document.getElementById('downloadOptions') as HTMLElement;
+    this.init();
+  }
+
+  private init() {
+    this.form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const url = (document.getElementById('postUrl') as HTMLInputElement).value;
+      await this.processUrl(url);
+    });
+  }
+
+  private async processUrl(url: string) {
+    try {
+      this.downloadOptions.innerHTML = '<div class="text-center">Loading...</div>';
+      this.result.classList.remove('hidden');
+      const mediaItems = await this.fetchMediaItems(url);
+      this.displayDownloadOptions(mediaItems);
+    } catch (error) {
+      this.showError('Failed to process URL. Please make sure it\'s a valid Instagram post URL.');
+    }
+  }
+
+  private async fetchMediaItems(url: string): Promise<MediaItem[]> {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve([
+          {
+            type: 'image',
+            url: 'https://example.com/image.jpg',
+            thumbnail: 'https://example.com/thumb.jpg'
+          }
+        ]);
+      }, 1000);
+    });
+  }
+
+  private displayDownloadOptions(items: MediaItem[]) {
+    this.downloadOptions.innerHTML = items.map((item, index) => `
+      <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+        <div class="flex items-center space-x-4">
+          ${item.thumbnail ? `
+            <img src="${item.thumbnail}" alt="Preview" class="w-16 h-16 object-cover rounded"/>
+          ` : ''}
+          <div>
+            <p class="font-medium">${item.type.charAt(0).toUpperCase() + item.type.slice(1)} ${index + 1}</p>
+            <p class="text-sm text-gray-500">Click to download</p>
+          </div>
+        </div>
+        <a
+          href="${item.url}"
+          download
+          class="px-4 py-2 bg-brand-blue text-white rounded hover:bg-brand-blue/90 transition-colors"
+        >
+          Download
+        </a>
+      </div>
+    `).join('');
+  }
+
+  private showError(message: string) {
+    this.downloadOptions.innerHTML = `
+      <div class="text-red-600 p-4 bg-red-50 rounded-lg">
+        ${message}
+      </div>
+    `;
+  }
+}
+
+// Initialize the downloader when the page loads
+document.addEventListener('DOMContentLoaded', () => {
+  new InstagramDownloader();
+});
+</script>

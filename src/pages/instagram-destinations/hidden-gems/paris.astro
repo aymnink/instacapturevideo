@@ -1,0 +1,110 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import CategoryHero from '../../../components/CategoryHero.astro';
+import PhotoSpot from '../../../components/PhotoSpot.astro';
+import PhotoTip from '../../../components/PhotoTip.astro';
+
+const title = "Hidden Paris Photography Guide";
+const description = "Discover secret spots and hidden gems in Paris that most tourists never find.";
+
+const photoSpots = [
+  {
+    title: "Rue des Thermopyles",
+    description: "A hidden cobblestone street in the 14th arrondissement with cottage-like houses and climbing vines.",
+    image: "https://images.unsplash.com/photo-1532295454114-d7bc89024613",
+    coordinates: "48.8334° N, 2.3204° E",
+    bestTime: "Midday",
+    difficulty: "Easy",
+    crowdLevel: "Low"
+  },
+  {
+    title: "Cour Damoye",
+    description: "A secret passage near Bastille with historic architecture and charming cafes.",
+    image: "https://images.unsplash.com/photo-1669408276432-10cd3a07fe89",
+    coordinates: "48.8528° N, 2.3702° E",
+    bestTime: "Morning",
+    difficulty: "Easy",
+    crowdLevel: "Low"
+  },
+  {
+    title: "Villa de l'Ermitage",
+    description: "Hidden street with artists' workshops and colorful houses in Belleville.",
+    image: "https://images.unsplash.com/photo-1542086490-11a8654691d0",
+    coordinates: "48.8705° N, 2.3843° E",
+    bestTime: "Afternoon",
+    difficulty: "Easy",
+    crowdLevel: "Low"
+  }
+];
+
+const photographyTips = [
+  {
+    title: "Light and Timing",
+    content: "Early morning provides the best light and fewest tourists.",
+    icon: "🌅"
+  },
+  {
+    title: "Local Etiquette",
+    content: "Always ask permission before photographing people or private courtyards.",
+    icon: "🤝"
+  },
+  {
+    title: "Hidden Entrances",
+    content: "Many secret spots are through unmarked passages - look for small doors and archways.",
+    icon: "🚪"
+  }
+];
+---
+
+<Layout title={title} description={description}>
+  <CategoryHero
+    title={title}
+    description={description}
+    image="https://images.unsplash.com/photo-1595039838779-f3780873afdd"
+  />
+
+  <article class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="prose prose-lg max-w-none mb-16">
+      <p class="lead text-xl text-gray-600">
+        Beyond the Eiffel Tower and Notre-Dame lies a different Paris, full of quiet corners and hidden beauty.
+      </p>
+      
+      <h2 class="text-3xl font-bold mt-12 mb-6">Secret Locations</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+      {photoSpots.map(spot => (
+        <PhotoSpot {...spot} />
+      ))}
+    </div>
+
+    <h2 class="text-3xl font-bold mb-6">Photography Tips</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+      {photographyTips.map(tip => (
+        <PhotoTip {...tip} />
+      ))}
+    </div>
+
+    <div class="prose prose-lg max-w-none">
+      <h2>Essential Information</h2>
+      <h3>Best Times to Visit</h3>
+      <ul>
+        <li>Early morning for empty streets</li>
+        <li>Golden hour for warm light on buildings</li>
+        <li>Rainy days for reflections and moody shots</li>
+      </ul>
+
+      <h3>Equipment Recommendations</h3>
+      <ul>
+        <li>35mm or 50mm prime lens for street photography</li>
+        <li>Wide-angle lens for narrow passages</li>
+        <li>Small, discreet camera bag</li>
+        <li>Weather-sealed gear for rain</li>
+      </ul>
+
+      <blockquote>
+        <p>"The real Paris reveals itself in the quiet moments, away from the tourist crowds."</p>
+      </blockquote>
+    </div>
+  </article>
+</Layout>

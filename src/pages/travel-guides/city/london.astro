@@ -1,0 +1,120 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import CategoryHero from '../../../components/CategoryHero.astro';
+import PhotoSpot from '../../../components/PhotoSpot.astro';
+import PhotoTip from '../../../components/PhotoTip.astro';
+
+const title = "London by Night Photography Guide";
+const description = "Capture the magic of London after dark, from historic landmarks to modern cityscapes.";
+
+const photoSpots = [
+  {
+    title: "Tower Bridge",
+    description: "Iconic Victorian bridge illuminated at night with perfect reflections.",
+    image: "https://images.unsplash.com/photo-1669408276432-10cd3a07fe89",
+    coordinates: "51.5055° N, 0.0754° W",
+    bestTime: "Blue Hour",
+    difficulty: "Easy",
+    crowdLevel: "Moderate"
+  },
+  {
+    title: "Sky Garden",
+    description: "Free public garden offering 360° views of London's skyline.",
+    image: "https://images.unsplash.com/photo-1542086490-11a8654691d0",
+    coordinates: "51.5112° N, 0.0836° W",
+    bestTime: "Sunset",
+    difficulty: "Easy",
+    crowdLevel: "High"
+  },
+  {
+    title: "Millennium Bridge",
+    description: "Leading lines to St. Paul's Cathedral with perfect symmetry.",
+    image: "https://images.unsplash.com/photo-1675154092378-1ca4978ec6a5",
+    coordinates: "51.5095° N, 0.0985° W",
+    bestTime: "Blue Hour",
+    difficulty: "Easy",
+    crowdLevel: "Moderate"
+  },
+  {
+    title: "Canary Wharf",
+    description: "Modern architecture and reflective surfaces in London's financial district.",
+    image: "https://images.unsplash.com/photo-1531986362435-16b427eb9c26",
+    coordinates: "51.5054° N, 0.0235° W",
+    bestTime: "Night",
+    difficulty: "Easy",
+    crowdLevel: "Low"
+  }
+];
+
+const photographyTips = [
+  {
+    title: "Weather Planning",
+    content: "Rainy evenings create beautiful reflections. Check weather apps for clear periods.",
+    icon: "🌧"
+  },
+  {
+    title: "Transport Tips",
+    content: "Last tube times vary. Plan night bus routes or use ride-sharing apps.",
+    icon: "🚇"
+  },
+  {
+    title: "Security",
+    content: "Most areas are safe but keep equipment secure. Consider photography insurance.",
+    icon: "🔒"
+  }
+];
+---
+
+<Layout title={title} description={description}>
+  <CategoryHero
+    title={title}
+    description={description}
+    image="https://images.unsplash.com/photo-1669408276432-10cd3a07fe89"
+  />
+
+  <article class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="prose prose-lg max-w-none mb-16">
+      <p class="lead text-xl text-gray-600">
+        London transforms after dark, offering photographers a mix of historic architecture and modern illuminations.
+      </p>
+      
+      <h2 class="text-3xl font-bold mt-12 mb-6">Prime Photo Locations</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+      {photoSpots.map(spot => (
+        <PhotoSpot {...spot} />
+      ))}
+    </div>
+
+    <h2 class="text-3xl font-bold mb-6">Photography Tips</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+      {photographyTips.map(tip => (
+        <PhotoTip {...tip} />
+      ))}
+    </div>
+
+    <div class="prose prose-lg max-w-none">
+      <h2>Essential Information</h2>
+      <h3>Best Seasons</h3>
+      <ul>
+        <li>Winter for longer blue hours</li>
+        <li>December for Christmas lights</li>
+        <li>Autumn for atmospheric conditions</li>
+      </ul>
+
+      <h3>Equipment Recommendations</h3>
+      <ul>
+        <li>Weather-sealed camera body</li>
+        <li>16-35mm wide-angle lens</li>
+        <li>Sturdy tripod</li>
+        <li>Remote shutter release</li>
+        <li>Microfiber cloths for rain</li>
+      </ul>
+
+      <blockquote>
+        <p>"London's mix of old and new creates endless opportunities for unique night photography."</p>
+      </blockquote>
+    </div>
+  </article>
+</Layout>

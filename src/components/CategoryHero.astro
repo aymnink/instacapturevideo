@@ -1,0 +1,26 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  image: string;
+}
+
+const { title, description, image } = Astro.props;
+---
+
+<div class="relative py-12 md:py-16 lg:py-24">
+  <div class="absolute inset-0">
+    <img
+      src={`${image}?w=1920&q=80&auto=format&fit=crop`}
+      alt={title}
+      class="w-full h-full object-cover"
+    />
+    <div class="absolute inset-0 bg-gradient-to-r from-gray-900/90 to-gray-900/70"></div>
+  </div>
+  <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-3xl">
+      <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 md:mb-6">{title}</h1>
+      <p class="text-lg md:text-xl text-gray-200">{description}</p>
+    </div>
+  </div>
+</div>

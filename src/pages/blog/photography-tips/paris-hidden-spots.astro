@@ -1,0 +1,104 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import CategoryHero from '../../../components/CategoryHero.astro';
+import PhotoSpot from '../../../components/PhotoSpot.astro';
+import PhotoTip from '../../../components/PhotoTip.astro';
+
+const title = "Hidden Gems of Paris Photography";
+const description = "Secret spots and unique angles in the City of Light.";
+const publishDate = "2024-02-15";
+
+const locations = [
+  {
+    title: "Rue Crémieux",
+    description: "Colorful street with pastel houses.",
+    bestTime: "Early morning",
+    tips: "Use symmetry and leading lines with the colorful facades."
+  },
+  {
+    title: "Square Rapp",
+    description: "Hidden view of the Eiffel Tower through an ornate arch.",
+    bestTime: "Late afternoon",
+    tips: "Frame the tower through the art nouveau ironwork."
+  },
+  {
+    title: "Galerie Vivienne",
+    description: "Historic covered passage with beautiful architecture.",
+    bestTime: "Any time",
+    tips: "Use high ISO and wide aperture for natural light shots."
+  }
+];
+
+const photographyTips = [
+  {
+    title: "Timing",
+    content: "Early morning offers empty streets and soft light.",
+    icon: "🌅"
+  },
+  {
+    title: "Access",
+    content: "Many spots are in residential areas. Be respectful and quiet.",
+    icon: "🏠"
+  },
+  {
+    title: "Weather",
+    content: "Rainy days create beautiful reflections on cobblestone streets.",
+    icon: "🌧"
+  }
+];
+---
+
+<Layout title={title} description={description}>
+  <CategoryHero
+    title={title}
+    description={description}
+    image="https://images.unsplash.com/photo-1595039838779-f3780873afdd"
+  />
+
+  <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="prose prose-lg max-w-none">
+      <div class="text-sm text-gray-500 mb-8">
+        Published on {new Date(publishDate).toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric'
+        })}
+      </div>
+
+      <p class="lead">
+        Beyond the iconic landmarks, Paris hides countless photogenic corners waiting to be discovered.
+      </p>
+
+      <h2>Secret Locations</h2>
+      {locations.map(location => (
+        <div class="mb-8">
+          <h3>{location.title}</h3>
+          <p>{location.description}</p>
+          <ul>
+            <li><strong>Best time to visit:</strong> {location.bestTime}</li>
+            <li><strong>Photography tips:</strong> {location.tips}</li>
+          </ul>
+        </div>
+      ))}
+
+      <h2>Photography Tips</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        {photographyTips.map(tip => (
+          <PhotoTip {...tip} />
+        ))}
+      </div>
+
+      <h2>Essential Equipment</h2>
+      <ul>
+        <li>35mm or 50mm prime lens</li>
+        <li>Wide-angle lens for architecture</li>
+        <li>Small, discreet camera bag</li>
+        <li>Comfortable walking shoes</li>
+      </ul>
+
+      <blockquote>
+        <p>"Paris reveals its true beauty to those who venture off the beaten path."</p>
+      </blockquote>
+    </div>
+  </article>
+</Layout>

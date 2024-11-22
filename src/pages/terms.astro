@@ -1,0 +1,97 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CategoryHero from '../components/CategoryHero.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+
+const title = "Terms of Service";
+const description = "Please read these terms carefully before using InstaCapture services.";
+
+const breadcrumbs = [
+  { name: "Home", href: "/" },
+  { name: "Terms of Service", href: "/terms" }
+];
+
+const sections = [
+  {
+    title: "Acceptance of Terms of Service",
+    content: "These Terms of Service are a legally binding contract between you and Insta Capture. By using our website and services, you agree to comply with these terms. If you do not agree, you should stop using the website immediately."
+  },
+  {
+    title: "User Responsibilities and Obligations",
+    content: [
+      "By using Insta Capture, you agree to comply with all applicable laws and regulations. You are solely responsible for ensuring your compliance with local laws regarding your use of Insta Capture.",
+      "You must not interfere with the operation of the website or services, upload harmful files, or attempt unauthorized access to our system or other users' accounts."
+    ]
+  },
+  {
+    title: "Changes to Services and Content",
+    content: "Insta Capture reserves the right to modify its services and content at any time without notice. We may also terminate or restrict access to certain features or sections of the website at our discretion."
+  },
+  {
+    title: "Privacy Policy",
+    content: "Insta Capture's Privacy Policy explains how we collect and use your data. Please review it at our Privacy Policy page."
+  },
+  {
+    title: "Termination",
+    content: "These Terms of Service remain in effect until terminated by you or Insta Capture. You may stop using the website at any time. We reserve the right to terminate your access if you violate these terms."
+  },
+  {
+    title: "Warranties and Disclaimers",
+    content: "All services and content are provided \"as is.\" Insta Capture disclaims any and all warranties, including but not limited to implied warranties of merchantability and fitness for a particular purpose."
+  },
+  {
+    title: "Indemnification",
+    content: "You agree to indemnify Insta Capture against any claims or damages resulting from your use of the website or services, or from your violation of these terms."
+  },
+  {
+    title: "Governing Law and Dispute Resolution",
+    content: "These Terms of Service are governed by the laws of the jurisdiction in which Insta Capture operates. Disputes arising from these terms will be resolved through binding arbitration."
+  }
+];
+---
+
+<Layout title={title} description={description}>
+  <CategoryHero
+    title={title}
+    description={description}
+    image="https://images.unsplash.com/photo-1611162617474-5b21e879e113"
+  />
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <Breadcrumbs paths={breadcrumbs} />
+    
+    <div class="mt-8 bg-white rounded-lg shadow-lg p-8">
+      <div class="prose prose-lg max-w-none">
+        <p class="text-lg text-gray-600 mb-8">
+          Last updated: {new Date().toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+          })}
+        </p>
+
+        {sections.map((section, index) => (
+          <div class="mb-12">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">{section.title}</h2>
+            {Array.isArray(section.content) ? (
+              <div class="space-y-4">
+                {section.content.map(paragraph => (
+                  <p class="text-gray-600">{paragraph}</p>
+                ))}
+              </div>
+            ) : (
+              <p class="text-gray-600">{section.content}</p>
+            )}
+          </div>
+        ))}
+
+        <div class="mt-16 bg-brand-blue/5 rounded-xl p-8">
+          <h2 class="text-xl font-bold text-brand-blue mb-4">Contact Us</h2>
+          <p class="text-gray-600">
+            If you have any questions about these Terms of Service, please contact us.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>

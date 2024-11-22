@@ -1,0 +1,121 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import CategoryHero from '../../../components/CategoryHero.astro';
+import PhotoSpot from '../../../components/PhotoSpot.astro';
+import PhotoTip from '../../../components/PhotoTip.astro';
+
+const title = "Indian Festivals Photography Guide";
+const description = "A comprehensive guide to capturing India's vibrant festivals and cultural celebrations.";
+
+const photoSpots = [
+  {
+    title: "Holi in Varanasi",
+    description: "The festival of colors along the sacred ghats of the Ganges.",
+    image: "https://images.unsplash.com/photo-1532295454114-d7bc89024613",
+    coordinates: "25.3176° N, 83.0062° E",
+    bestTime: "Morning",
+    difficulty: "Moderate",
+    crowdLevel: "High"
+  },
+  {
+    title: "Pushkar Camel Fair",
+    description: "Annual camel and livestock fair in the Rajasthan desert.",
+    image: "https://images.unsplash.com/photo-1542086490-11a8654691d0",
+    coordinates: "26.4892° N, 74.5503° E",
+    bestTime: "Sunrise/Sunset",
+    difficulty: "Easy",
+    crowdLevel: "High"
+  },
+  {
+    title: "Diwali in Jaipur",
+    description: "Festival of lights at the illuminated Amber Fort.",
+    image: "https://images.unsplash.com/photo-1669408276432-10cd3a07fe89",
+    coordinates: "26.9855° N, 75.8513° E",
+    bestTime: "Evening",
+    difficulty: "Easy",
+    crowdLevel: "High"
+  },
+  {
+    title: "Ganesh Chaturthi in Mumbai",
+    description: "Massive street processions and celebrations.",
+    image: "https://images.unsplash.com/photo-1675154092378-1ca4978ec6a5",
+    coordinates: "19.0760° N, 72.8777° E",
+    bestTime: "Evening",
+    difficulty: "Moderate",
+    crowdLevel: "Extreme"
+  }
+];
+
+const photographyTips = [
+  {
+    title: "Festival Protection",
+    content: "Use weather-sealed gear and protective covers during Holi. Consider disposable camera covers.",
+    icon: "🎨"
+  },
+  {
+    title: "Cultural Sensitivity",
+    content: "Always ask permission before photographing ceremonies. Remove shoes at temples.",
+    icon: "🙏"
+  },
+  {
+    title: "Timing Strategy",
+    content: "Research festival dates well in advance. Many follow lunar calendar.",
+    icon: "📅"
+  }
+];
+---
+
+<Layout title={title} description={description}>
+  <CategoryHero
+    title={title}
+    description={description}
+    image="https://images.unsplash.com/photo-1532295454114-d7bc89024613"
+  />
+
+  <article class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="prose prose-lg max-w-none mb-16">
+      <p class="lead text-xl text-gray-600">
+        India's festivals offer photographers an explosion of colors, traditions, and cultural moments.
+      </p>
+      
+      <h2 class="text-3xl font-bold mt-12 mb-6">Festival Locations</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+      {photoSpots.map(spot => (
+        <PhotoSpot {...spot} />
+      ))}
+    </div>
+
+    <h2 class="text-3xl font-bold mb-6">Photography Tips</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+      {photographyTips.map(tip => (
+        <PhotoTip {...tip} />
+      ))}
+    </div>
+
+    <div class="prose prose-lg max-w-none">
+      <h2>Essential Information</h2>
+      <h3>Major Festivals</h3>
+      <ul>
+        <li>Holi (February/March)</li>
+        <li>Diwali (October/November)</li>
+        <li>Pushkar Fair (November)</li>
+        <li>Ganesh Chaturthi (August/September)</li>
+      </ul>
+
+      <h3>Equipment Recommendations</h3>
+      <ul>
+        <li>Weather-sealed camera body</li>
+        <li>Fast prime lenses (35mm, 50mm)</li>
+        <li>Camera rain covers</li>
+        <li>Multiple memory cards</li>
+        <li>Lens cleaning supplies</li>
+      </ul>
+
+      <blockquote>
+        <p>"India's festivals are a photographer's dream, where every moment tells a story of tradition and celebration."</p>
+      </blockquote>
+    </div>
+  </article>
+</Layout>

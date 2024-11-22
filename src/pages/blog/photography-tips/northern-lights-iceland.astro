@@ -1,0 +1,105 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import CategoryHero from '../../../components/CategoryHero.astro';
+import PhotoSpot from '../../../components/PhotoSpot.astro';
+import PhotoTip from '../../../components/PhotoTip.astro';
+
+const title = "Capturing the Northern Lights: Iceland Edition";
+const description = "Expert tips for photographing the aurora borealis in Iceland's dramatic landscapes.";
+const publishDate = "2024-03-05";
+
+const locations = [
+  {
+    title: "Kirkjufell Mountain",
+    description: "Iconic mountain with waterfalls, perfect for aurora shots.",
+    bestTime: "Clear winter nights",
+    tips: "Include the waterfalls in foreground for added interest."
+  },
+  {
+    title: "Jökulsárlón Glacier Lagoon",
+    description: "Aurora reflections in the lagoon with ice formations.",
+    bestTime: "Dark winter nights",
+    tips: "Use ice formations as foreground elements."
+  },
+  {
+    title: "Thingvellir National Park",
+    description: "Dark sky area close to Reykjavik.",
+    bestTime: "September to March",
+    tips: "Use the tectonic rifts as leading lines."
+  }
+];
+
+const photographyTips = [
+  {
+    title: "Camera Settings",
+    content: "Start with ISO 1600, f/2.8, 15-second exposure. Adjust based on aurora intensity.",
+    icon: "📸"
+  },
+  {
+    title: "Planning",
+    content: "Check aurora forecasts and clear sky charts. Moon phase affects visibility.",
+    icon: "🌙"
+  },
+  {
+    title: "Cold Weather",
+    content: "Bring extra batteries. Cold temperatures drain them quickly.",
+    icon: "❄️"
+  }
+];
+---
+
+<Layout title={title} description={description}>
+  <CategoryHero
+    title={title}
+    description={description}
+    image="https://images.unsplash.com/photo-1669408276432-10cd3a07fe89"
+  />
+
+  <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="prose prose-lg max-w-none">
+      <div class="text-sm text-gray-500 mb-8">
+        Published on {new Date(publishDate).toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric'
+        })}
+      </div>
+
+      <p class="lead">
+        Photographing the Northern Lights in Iceland combines technical skill with the magic of nature's most spectacular light show.
+      </p>
+
+      <h2>Prime Locations</h2>
+      {locations.map(location => (
+        <div class="mb-8">
+          <h3>{location.title}</h3>
+          <p>{location.description}</p>
+          <ul>
+            <li><strong>Best time to visit:</strong> {location.bestTime}</li>
+            <li><strong>Photography tips:</strong> {location.tips}</li>
+          </ul>
+        </div>
+      ))}
+
+      <h2>Photography Tips</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        {photographyTips.map(tip => (
+          <PhotoTip {...tip} />
+        ))}
+      </div>
+
+      <h2>Essential Equipment</h2>
+      <ul>
+        <li>Full-frame camera with good high ISO performance</li>
+        <li>Fast wide-angle lens (f/2.8 or faster)</li>
+        <li>Sturdy tripod</li>
+        <li>Remote shutter release</li>
+        <li>Hand warmers for batteries</li>
+      </ul>
+
+      <blockquote>
+        <p>"Patience is key when photographing the aurora. Some of the best shots come after hours of waiting."</p>
+      </blockquote>
+    </div>
+  </article>
+</Layout>

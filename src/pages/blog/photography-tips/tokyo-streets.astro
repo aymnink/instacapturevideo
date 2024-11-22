@@ -1,0 +1,99 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import CategoryHero from '../../../components/CategoryHero.astro';
+import PhotoSpot from '../../../components/PhotoSpot.astro';
+import PhotoTip from '../../../components/PhotoTip.astro';
+
+const title = "Tokyo Street Photography Guide";
+const description = "Master the art of capturing Tokyo's vibrant street life and neon nights.";
+const publishDate = "2024-02-28";
+
+const locations = [
+  {
+    title: "Shinjuku Golden Gai",
+    description: "Narrow alleyways filled with tiny bars and authentic atmosphere.",
+    bestTime: "Evening",
+    tips: "Use high ISO and a fast prime lens for low light conditions."
+  },
+  {
+    title: "Shimokitazawa",
+    description: "Hip neighborhood with vintage shops and street art.",
+    bestTime: "Afternoon",
+    tips: "Focus on the eclectic mix of people and shop fronts."
+  },
+  {
+    title: "Yanaka Ginza",
+    description: "Traditional shopping street with local character.",
+    bestTime: "Late Afternoon",
+    tips: "Capture daily life and interactions between locals."
+  }
+];
+
+const photographyTips = [
+  {
+    title: "Night Photography",
+    content: "Use aperture f/1.8 or wider for neon signs and low light scenes.",
+    icon: "🌙"
+  },
+  {
+    title: "Street Etiquette",
+    content: "Be respectful when photographing people. Focus on the scene rather than individuals.",
+    icon: "📸"
+  }
+];
+---
+
+<Layout title={title} description={description}>
+  <CategoryHero
+    title={title}
+    description={description}
+    image="https://images.unsplash.com/photo-1523474438810-b04a2480633c"
+  />
+
+  <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="prose prose-lg max-w-none">
+      <div class="text-sm text-gray-500 mb-8">
+        Published on {new Date(publishDate).toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric'
+        })}
+      </div>
+
+      <p class="lead">
+        Tokyo's streets offer an endless canvas for photographers, from neon-lit alleys to quiet neighborhood scenes.
+      </p>
+
+      <h2>Prime Locations</h2>
+      {locations.map(location => (
+        <div class="mb-8">
+          <h3>{location.title}</h3>
+          <p>{location.description}</p>
+          <ul>
+            <li><strong>Best time to visit:</strong> {location.bestTime}</li>
+            <li><strong>Photography tips:</strong> {location.tips}</li>
+          </ul>
+        </div>
+      ))}
+
+      <h2>Photography Tips</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        {photographyTips.map(tip => (
+          <PhotoTip {...tip} />
+        ))}
+      </div>
+
+      <h2>Essential Equipment</h2>
+      <ul>
+        <li>Fast prime lenses (35mm or 50mm)</li>
+        <li>High ISO capable camera</li>
+        <li>Small, discreet camera bag</li>
+        <li>Extra batteries for night shooting</li>
+      </ul>
+
+      <blockquote>
+        <p>"Tokyo's streets tell countless stories through light and shadow."</p>
+      </blockquote>
+    </div>
+  </article>
+</Layout>

@@ -1,0 +1,110 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import CategoryHero from '../../../components/CategoryHero.astro';
+import PhotoSpot from '../../../components/PhotoSpot.astro';
+import PhotoTip from '../../../components/PhotoTip.astro';
+
+const title = "Cappadocia Hot Air Balloon Photography Guide";
+const description = "Master the art of capturing Turkey's magical morning ritual of hundreds of hot air balloons.";
+
+const photoSpots = [
+  {
+    title: "Sunset Point",
+    description: "Panoramic viewpoint for balloon launches.",
+    image: "https://images.unsplash.com/photo-1542086490-11a8654691d0",
+    coordinates: "38.6431° N, 34.8291° E",
+    bestTime: "Sunrise",
+    difficulty: "Easy",
+    crowdLevel: "High"
+  },
+  {
+    title: "Rose Valley",
+    description: "Pink-hued rocks with cave churches.",
+    image: "https://images.unsplash.com/photo-1669408276432-10cd3a07fe89",
+    coordinates: "38.6640° N, 34.8363° E",
+    bestTime: "Sunrise/Sunset",
+    difficulty: "Moderate",
+    crowdLevel: "Moderate"
+  },
+  {
+    title: "Göreme Open Air Museum",
+    description: "Ancient cave churches and monasteries.",
+    image: "https://images.unsplash.com/photo-1675154092378-1ca4978ec6a5",
+    coordinates: "38.6431° N, 34.8291° E",
+    bestTime: "Morning",
+    difficulty: "Easy",
+    crowdLevel: "High"
+  }
+];
+
+const photographyTips = [
+  {
+    title: "Balloon Photography",
+    content: "Use fast shutter speeds for sharp balloon shots. Consider multiple focal lengths.",
+    icon: "🎈"
+  },
+  {
+    title: "Timing",
+    content: "Arrive 1 hour before sunrise. Flights only operate in good weather.",
+    icon: "⏰"
+  },
+  {
+    title: "Composition",
+    content: "Include fairy chimneys and landscape features with balloons.",
+    icon: "📸"
+  }
+];
+---
+
+<Layout title={title} description={description}>
+  <CategoryHero
+    title={title}
+    description={description}
+    image="https://images.unsplash.com/photo-1542086490-11a8654691d0"
+  />
+
+  <article class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="prose prose-lg max-w-none mb-16">
+      <p class="lead text-xl text-gray-600">
+        Cappadocia's otherworldly landscape becomes even more magical when hundreds of hot air balloons take to the sky.
+      </p>
+      
+      <h2 class="text-3xl font-bold mt-12 mb-6">Prime Photo Locations</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+      {photoSpots.map(spot => (
+        <PhotoSpot {...spot} />
+      ))}
+    </div>
+
+    <h2 class="text-3xl font-bold mb-6">Photography Tips</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+      {photographyTips.map(tip => (
+        <PhotoTip {...tip} />
+      ))}
+    </div>
+
+    <div class="prose prose-lg max-w-none">
+      <h2>Essential Information</h2>
+      <h3>Best Seasons</h3>
+      <ul>
+        <li>April-June for mild weather</li>
+        <li>September-November for fall colors</li>
+        <li>Winter for possible snow scenes</li>
+      </ul>
+
+      <h3>Equipment Recommendations</h3>
+      <ul>
+        <li>Wide-angle lens (16-35mm)</li>
+        <li>Telephoto lens (70-200mm)</li>
+        <li>Tripod for low light</li>
+        <li>Drone (with permits)</li>
+      </ul>
+
+      <blockquote>
+        <p>"Cappadocia's balloon-filled skies create a photographer's dream where earth and air dance together."</p>
+      </blockquote>
+    </div>
+  </article>
+</Layout>

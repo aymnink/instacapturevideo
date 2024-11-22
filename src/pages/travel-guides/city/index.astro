@@ -1,0 +1,64 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import CategoryHero from '../../../components/CategoryHero.astro';
+import DestinationCard from '../../../components/DestinationCard.astro';
+
+const title = "City Photography Guides";
+const description = "Expert guides for capturing the world's most photogenic urban landscapes and city life.";
+
+const destinations = [
+  {
+    title: "Tokyo After Dark",
+    description: "A photographer's guide to capturing the neon city.",
+    image: "https://images.unsplash.com/photo-1523474438810-b04a2480633c",
+    href: "/travel-guides/city/tokyo",
+    location: "Japan"
+  },
+  {
+    title: "Dubai Cityscapes",
+    description: "Capturing the world's most futuristic skyline.",
+    image: "https://images.unsplash.com/photo-1532295454114-d7bc89024613",
+    href: "/travel-guides/city/dubai",
+    location: "UAE"
+  },
+  {
+    title: "London by Night",
+    description: "Photography guide to the historic city after dark.",
+    image: "https://images.unsplash.com/photo-1669408276432-10cd3a07fe89",
+    href: "/travel-guides/city/london",
+    location: "UK"
+  },
+  {
+    title: "Singapore Architecture",
+    description: "Modern meets nature in this urban paradise.",
+    image: "https://images.unsplash.com/photo-1542086490-11a8654691d0",
+    href: "/travel-guides/city/singapore",
+    location: "Singapore"
+  },
+  {
+    title: "Hong Kong Heights",
+    description: "Capturing the vertical city from above.",
+    image: "https://images.unsplash.com/photo-1675154092378-1ca4978ec6a5",
+    href: "/travel-guides/city/hong-kong",
+    location: "Hong Kong"
+  }
+];
+---
+
+<Layout title={title} description={description}>
+  <CategoryHero
+    title={title}
+    description={description}
+    image="https://images.unsplash.com/photo-1523474438810-b04a2480633c"
+  />
+
+  <section class="py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {destinations.map(destination => (
+          <DestinationCard {...destination} />
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

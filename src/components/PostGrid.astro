@@ -1,0 +1,58 @@
+---
+import { getImageWithParams } from '../utils/images';
+
+const posts = [
+  {
+    title: "Ultimate Guide to Bali's Waterfalls",
+    excerpt: "Discover hidden cascades and perfect photo opportunities",
+    href: "/travel-guides/nature/bali-waterfalls",
+    category: "Nature Escapes",
+    image: "https://unsplash.com/photos/clear-waterfalls-surrounded-by-trees-ZfdwcbRyxHk"
+  },
+  {
+    title: "Street Photography in Morocco",
+    excerpt: "Capturing the vibrant colors of Marrakech",
+    href: "/travel-guides/culture/morocco",
+    category: "Cultural Experiences",
+    image: "https://images.unsplash.com/photo-1532295454114-d7bc89024613"
+  },
+  {
+    title: "New York's Secret Rooftops",
+    excerpt: "Urban exploration for the perfect skyline shot",
+    href: "/instagram-destinations/hidden-gems/new-york",
+    category: "Hidden Gems",
+    image: "https://images.unsplash.com/photo-1572573309811-48474d1891b7"
+  },
+  {
+    title: "Cherry Blossoms in Kyoto",
+    excerpt: "When and where to capture sakura season",
+    href: "/instagram-destinations/trending/kyoto-cherry-blossoms",
+    category: "Trending Locations",
+    image: "https://images.unsplash.com/photo-1531986362435-16b427eb9c26"
+  }
+];
+---
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+  {posts.map(post => (
+    <article class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow">
+      <div class="aspect-w-16 aspect-h-9">
+        <img 
+          src={getImageWithParams(post.image)}
+          alt={post.title}
+          class="w-full h-48 object-cover"
+          loading="lazy"
+        />
+      </div>
+      <div class="p-6">
+        <div class="text-sm text-blue-600 font-semibold mb-2">{post.category}</div>
+        <h3 class="text-xl font-bold mb-2">
+          <a href={post.href} class="hover:text-blue-600 transition-colors">
+            {post.title}
+          </a>
+        </h3>
+        <p class="text-gray-600">{post.excerpt}</p>
+      </div>
+    </article>
+  ))}
+</div>

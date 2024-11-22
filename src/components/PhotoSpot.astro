@@ -1,0 +1,57 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  image: string;
+  coordinates?: string;
+  bestTime?: string;
+  difficulty?: 'Easy' | 'Moderate' | 'Hard';
+  crowdLevel?: 'Low' | 'Moderate' | 'High';
+}
+
+const { 
+  title, 
+  description, 
+  image, 
+  coordinates, 
+  bestTime = "Sunrise/Sunset",
+  difficulty = "Moderate",
+  crowdLevel = "Moderate"
+} = Astro.props;
+
+import { getImageWithParams } from '../utils/images';
+---
+
+<div class="bg-white rounded-lg shadow-md overflow-hidden">
+  <img 
+    src={getImageWithParams(image, 800)}
+    alt={title}
+    class="w-full h-64 object-cover"
+    loading="lazy"
+  />
+  <div class="p-6">
+    <h3 class="text-xl font-bold mb-2">{title}</h3>
+    <p class="text-gray-600 mb-4">{description}</p>
+    
+    <div class="grid grid-cols-2 gap-4 text-sm">
+      {coordinates && (
+        <div>
+          <span class="font-semibold">Location:</span>
+          <p class="text-gray-600">{coordinates}</p>
+        </div>
+      )}
+      <div>
+        <span class="font-semibold">Best Time:</span>
+        <p class="text-gray-600">{bestTime}</p>
+      </div>
+      <div>
+        <span class="font-semibold">Difficulty:</span>
+        <p class="text-gray-600">{difficulty}</p>
+      </div>
+      <div>
+        <span class="font-semibold">Crowd Level:</span>
+        <p class="text-gray-600">{crowdLevel}</p>
+      </div>
+    </div>
+  </div>
+</div>

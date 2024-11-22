@@ -1,0 +1,120 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import CategoryHero from '../../../components/CategoryHero.astro';
+import PhotoSpot from '../../../components/PhotoSpot.astro';
+import PhotoTip from '../../../components/PhotoTip.astro';
+
+const title = "Thai Temples Photography Guide";
+const description = "Master the art of capturing Thailand's stunning temples and Buddhist traditions.";
+
+const photoSpots = [
+  {
+    title: "Wat Phra Singh",
+    description: "Chiang Mai's most revered temple with classic Lanna architecture.",
+    image: "https://images.unsplash.com/photo-1542086490-11a8654691d0",
+    coordinates: "18.7883° N, 98.9853° E",
+    bestTime: "Morning",
+    difficulty: "Easy",
+    crowdLevel: "Moderate"
+  },
+  {
+    title: "Wat Arun",
+    description: "Bangkok's Temple of Dawn along the Chao Phraya River.",
+    image: "https://images.unsplash.com/photo-1669408276432-10cd3a07fe89",
+    coordinates: "13.7437° N, 100.4888° E",
+    bestTime: "Sunset",
+    difficulty: "Easy",
+    crowdLevel: "High"
+  },
+  {
+    title: "White Temple",
+    description: "Contemporary Buddhist temple with unique artistic elements.",
+    image: "https://images.unsplash.com/photo-1675154092378-1ca4978ec6a5",
+    coordinates: "19.8243° N, 99.7631° E",
+    bestTime: "Early Morning",
+    difficulty: "Easy",
+    crowdLevel: "High"
+  },
+  {
+    title: "Wat Pho",
+    description: "Home of the Reclining Buddha and traditional Thai massage.",
+    image: "https://images.unsplash.com/photo-1531986362435-16b427eb9c26",
+    coordinates: "13.7465° N, 100.4933° E",
+    bestTime: "Morning",
+    difficulty: "Easy",
+    crowdLevel: "High"
+  }
+];
+
+const photographyTips = [
+  {
+    title: "Temple Etiquette",
+    content: "Dress modestly, remove shoes, ask permission for photos of monks.",
+    icon: "🙏"
+  },
+  {
+    title: "Lighting Tips",
+    content: "Early morning for best light on golden stupas. Avoid harsh midday sun.",
+    icon: "🌅"
+  },
+  {
+    title: "Composition",
+    content: "Look for symmetry in architecture. Include monks or worshippers for scale.",
+    icon: "📸"
+  }
+];
+---
+
+<Layout title={title} description={description}>
+  <CategoryHero
+    title={title}
+    description={description}
+    image="https://images.unsplash.com/photo-1542086490-11a8654691d0"
+  />
+
+  <article class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="prose prose-lg max-w-none mb-16">
+      <p class="lead text-xl text-gray-600">
+        Thailand's temples offer photographers a stunning blend of architecture, spirituality, and tradition.
+      </p>
+      
+      <h2 class="text-3xl font-bold mt-12 mb-6">Temple Locations</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+      {photoSpots.map(spot => (
+        <PhotoSpot {...spot} />
+      ))}
+    </div>
+
+    <h2 class="text-3xl font-bold mb-6">Photography Tips</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+      {photographyTips.map(tip => (
+        <PhotoTip {...tip} />
+      ))}
+    </div>
+
+    <div class="prose prose-lg max-w-none">
+      <h2>Essential Information</h2>
+      <h3>Best Times to Visit</h3>
+      <ul>
+        <li>November to February (cool season)</li>
+        <li>Early morning for ceremonies</li>
+        <li>Buddhist holidays for special events</li>
+      </ul>
+
+      <h3>Equipment Recommendations</h3>
+      <ul>
+        <li>Wide-angle lens (16-35mm)</li>
+        <li>Fast prime lens for low light</li>
+        <li>Polarizing filter</li>
+        <li>Tripod (where permitted)</li>
+        <li>Lens cleaning supplies</li>
+      </ul>
+
+      <blockquote>
+        <p>"Thai temples are a harmonious blend of architecture and spirituality, offering endless opportunities for meaningful photography."</p>
+      </blockquote>
+    </div>
+  </article>
+</Layout>

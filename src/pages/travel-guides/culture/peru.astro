@@ -1,0 +1,120 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import CategoryHero from '../../../components/CategoryHero.astro';
+import PhotoSpot from '../../../components/PhotoSpot.astro';
+import PhotoTip from '../../../components/PhotoTip.astro';
+
+const title = "Peruvian Cultural Photography Guide";
+const description = "Document the rich traditions and ancient heritage of Peru's diverse cultures.";
+
+const photoSpots = [
+  {
+    title: "Cusco Markets",
+    description: "Traditional markets with colorful textiles and local crafts.",
+    image: "https://images.unsplash.com/photo-1532295454114-d7bc89024613",
+    coordinates: "13.5319° S, 71.9675° W",
+    bestTime: "Morning",
+    difficulty: "Easy",
+    crowdLevel: "High"
+  },
+  {
+    title: "Sacred Valley",
+    description: "Ancient agricultural terraces and traditional farming methods.",
+    image: "https://images.unsplash.com/photo-1542086490-11a8654691d0",
+    coordinates: "13.2555° S, 72.2047° W",
+    bestTime: "Morning",
+    difficulty: "Moderate",
+    crowdLevel: "Moderate"
+  },
+  {
+    title: "Uros Islands",
+    description: "Floating reed islands on Lake Titicaca with unique lifestyle.",
+    image: "https://images.unsplash.com/photo-1669408276432-10cd3a07fe89",
+    coordinates: "15.8422° S, 69.9759° W",
+    bestTime: "Morning",
+    difficulty: "Easy",
+    crowdLevel: "Moderate"
+  },
+  {
+    title: "Maras Salt Ponds",
+    description: "Ancient Incan salt evaporation ponds still in use today.",
+    image: "https://images.unsplash.com/photo-1675154092378-1ca4978ec6a5",
+    coordinates: "13.3333° S, 72.1557° W",
+    bestTime: "Midday",
+    difficulty: "Easy",
+    crowdLevel: "Low"
+  }
+];
+
+const photographyTips = [
+  {
+    title: "Altitude Awareness",
+    content: "Acclimatize before attempting strenuous photo hikes. Stay hydrated.",
+    icon: "⛰️"
+  },
+  {
+    title: "Cultural Respect",
+    content: "Always ask permission for portraits. Some communities request small payments.",
+    icon: "🤝"
+  },
+  {
+    title: "Market Photography",
+    content: "Purchase small items from vendors you photograph. Use fast prime lenses.",
+    icon: "📸"
+  }
+];
+---
+
+<Layout title={title} description={description}>
+  <CategoryHero
+    title={title}
+    description={description}
+    image="https://images.unsplash.com/photo-1532295454114-d7bc89024613"
+  />
+
+  <article class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="prose prose-lg max-w-none mb-16">
+      <p class="lead text-xl text-gray-600">
+        Peru's rich cultural heritage offers photographers a unique blend of ancient traditions and modern life.
+      </p>
+      
+      <h2 class="text-3xl font-bold mt-12 mb-6">Cultural Locations</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+      {photoSpots.map(spot => (
+        <PhotoSpot {...spot} />
+      ))}
+    </div>
+
+    <h2 class="text-3xl font-bold mb-6">Photography Tips</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+      {photographyTips.map(tip => (
+        <PhotoTip {...tip} />
+      ))}
+    </div>
+
+    <div class="prose prose-lg max-w-none">
+      <h2>Essential Information</h2>
+      <h3>Best Times to Visit</h3>
+      <ul>
+        <li>May to October (dry season)</li>
+        <li>June for Inti Raymi festival</li>
+        <li>Early morning for markets</li>
+      </ul>
+
+      <h3>Equipment Recommendations</h3>
+      <ul>
+        <li>Versatile zoom lens (24-70mm)</li>
+        <li>Portrait lens (85mm)</li>
+        <li>Polarizing filter</li>
+        <li>Portable flash</li>
+        <li>Weather-sealed gear</li>
+      </ul>
+
+      <blockquote>
+        <p>"Peru's cultural heritage is a living museum, where ancient traditions blend seamlessly with modern life."</p>
+      </blockquote>
+    </div>
+  </article>
+</Layout>

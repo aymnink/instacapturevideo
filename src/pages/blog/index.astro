@@ -1,0 +1,226 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CategoryHero from '../../components/CategoryHero.astro';
+import { getImageWithParams } from '../../utils/images';
+
+const title = "Instagram Tips & Tutorials";
+const description = "Expert guides and tutorials for Instagram content creators and photographers.";
+
+const posts = [
+  {
+    title: "10 Pro Tips for Instagram Video Downloads",
+    excerpt: "Learn how to efficiently download and manage Instagram videos for your content creation needs.",
+    image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113",
+    date: "2024-03-20",
+    category: "Tutorials",
+    href: "/blog/instagram-tips/video-download-tips"
+  },
+  {
+    title: "Instagram Content Creation Guide 2024",
+    excerpt: "Master the art of creating engaging Instagram content that stands out.",
+    image: "https://images.unsplash.com/photo-1611162616305-c69b3396c604",
+    date: "2024-03-15",
+    category: "Content Creation",
+    href: "/blog/instagram-tips/content-creation-guide"
+  },
+  {
+    title: "Best Practices for Instagram Video Quality",
+    excerpt: "Optimize your Instagram videos for the best possible quality and engagement.",
+    image: "https://images.unsplash.com/photo-1611162618071-b39a2ec055fb",
+    date: "2024-03-10",
+    category: "Technical Tips",
+    href: "/blog/instagram-tips/video-quality-guide"
+  }
+];
+
+const instagramDestinations = [
+  {
+    title: "Most Instagrammable Spots in Dubai",
+    excerpt: "Discover the perfect photo locations in the city of luxury and innovation.",
+    image: "https://images.unsplash.com/photo-1532295454114-d7bc89024613",
+    category: "Destinations",
+    href: "/blog/instagram-destinations/dubai"
+  },
+  {
+    title: "Hidden Gems of Tokyo",
+    excerpt: "Explore the lesser-known photo spots in Japan's vibrant capital.",
+    image: "https://images.unsplash.com/photo-1523474438810-b04a2480633c",
+    category: "Hidden Gems",
+    href: "/blog/instagram-destinations/tokyo"
+  },
+  {
+    title: "Santorini Photo Guide",
+    excerpt: "Capture the perfect shots in Greece's most photogenic island.",
+    image: "https://images.unsplash.com/photo-1611001897293-561e0c30f938",
+    category: "Photography Guide",
+    href: "/blog/instagram-destinations/santorini"
+  }
+];
+
+const travelGuides = [
+  {
+    title: "Ultimate Paris Photography Guide",
+    excerpt: "Master the art of capturing the City of Light's most iconic locations.",
+    image: "https://images.unsplash.com/photo-1595039838779-f3780873afdd",
+    category: "City Guide",
+    href: "/blog/travel-guides/paris"
+  },
+  {
+    title: "Iceland Photography Tips",
+    excerpt: "Expert advice for photographing the land of fire and ice.",
+    image: "https://images.unsplash.com/photo-1669408276432-10cd3a07fe89",
+    category: "Nature Guide",
+    href: "/blog/travel-guides/iceland"
+  },
+  {
+    title: "Bali Photo Locations",
+    excerpt: "The most photogenic spots in the Island of the Gods.",
+    image: "https://images.unsplash.com/photo-1675154092378-1ca4978ec6a5",
+    category: "Island Guide",
+    href: "/blog/travel-guides/bali"
+  }
+];
+
+const categories = [
+  "Tutorials",
+  "Content Creation",
+  "Technical Tips",
+  "Instagram Updates",
+  "Case Studies"
+];
+---
+
+<Layout title={title} description={description}>
+  <CategoryHero
+    title={title}
+    description={description}
+    image="https://images.unsplash.com/photo-1611162617474-5b21e879e113"
+  />
+
+  <section class="py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Categories -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold mb-6">Browse by Category</h2>
+        <div class="flex flex-wrap gap-4">
+          {categories.map(category => (
+            <a
+              href={`#${category.toLowerCase().replace(' ', '-')}`}
+              class="px-4 py-2 bg-gray-100 hover:bg-brand-blue/10 rounded-full text-sm font-medium transition-colors"
+            >
+              {category}
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <!-- Latest Posts -->
+      <div class="mb-16">
+        <h2 class="text-2xl font-bold mb-8">Latest Posts</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {posts.map(post => (
+            <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+              <img 
+                src={getImageWithParams(post.image, 600)}
+                alt={post.title}
+                class="w-full h-48 object-cover"
+              />
+              <div class="p-6">
+                <div class="flex items-center text-sm text-gray-500 mb-2">
+                  <time datetime={post.date}>
+                    {new Date(post.date).toLocaleDateString('en-US', {
+                      year: 'numeric',
+                      month: 'long',
+                      day: 'numeric'
+                    })}
+                  </time>
+                  <span class="mx-2">·</span>
+                  <span class="text-brand-blue font-medium">{post.category}</span>
+                </div>
+                <h3 class="text-xl font-bold mb-2">
+                  <a href={post.href} class="hover:text-brand-blue transition-colors">
+                    {post.title}
+                  </a>
+                </h3>
+                <p class="text-gray-600">{post.excerpt}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+
+      <!-- Instagram Destinations -->
+      <div class="mb-16">
+        <h2 class="text-2xl font-bold mb-8">Instagram Destinations</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {instagramDestinations.map(post => (
+            <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+              <img 
+                src={getImageWithParams(post.image, 600)}
+                alt={post.title}
+                class="w-full h-48 object-cover"
+              />
+              <div class="p-6">
+                <div class="flex items-center text-sm text-gray-500 mb-2">
+                  <span class="text-brand-blue font-medium">{post.category}</span>
+                </div>
+                <h3 class="text-xl font-bold mb-2">
+                  <a href={post.href} class="hover:text-brand-blue transition-colors">
+                    {post.title}
+                  </a>
+                </h3>
+                <p class="text-gray-600">{post.excerpt}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+
+      <!-- Travel Guides -->
+      <div class="mb-16">
+        <h2 class="text-2xl font-bold mb-8">Travel Photography Guides</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {travelGuides.map(post => (
+            <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+              <img 
+                src={getImageWithParams(post.image, 600)}
+                alt={post.title}
+                class="w-full h-48 object-cover"
+              />
+              <div class="p-6">
+                <div class="flex items-center text-sm text-gray-500 mb-2">
+                  <span class="text-brand-blue font-medium">{post.category}</span>
+                </div>
+                <h3 class="text-xl font-bold mb-2">
+                  <a href={post.href} class="hover:text-brand-blue transition-colors">
+                    {post.title}
+                  </a>
+                </h3>
+                <p class="text-gray-600">{post.excerpt}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+
+      <!-- Coming Soon -->
+      <div class="mt-16">
+        <h2 class="text-2xl font-bold mb-6">Coming Soon</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="font-semibold mb-2">Instagram Analytics Guide</h3>
+            <p class="text-gray-600">Master the metrics that matter for your Instagram growth.</p>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="font-semibold mb-2">Reels Creation Masterclass</h3>
+            <p class="text-gray-600">Learn to create engaging Reels that capture attention.</p>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="font-semibold mb-2">Instagram SEO Tips</h3>
+            <p class="text-gray-600">Optimize your content for better discoverability.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

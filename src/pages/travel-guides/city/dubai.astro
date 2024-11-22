@@ -1,0 +1,119 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import CategoryHero from '../../../components/CategoryHero.astro';
+import PhotoSpot from '../../../components/PhotoSpot.astro';
+import PhotoTip from '../../../components/PhotoTip.astro';
+
+const title = "Dubai Cityscapes Photography Guide";
+const description = "Master the art of capturing the world's most futuristic skyline and architectural marvels.";
+
+const photoSpots = [
+  {
+    title: "Dubai Frame",
+    description: "The world's largest picture frame offering unique perspectives of old and new Dubai.",
+    image: "https://images.unsplash.com/photo-1532295454114-d7bc89024613",
+    coordinates: "25.2352° N, 55.3002° E",
+    bestTime: "Sunset",
+    difficulty: "Easy",
+    crowdLevel: "Moderate"
+  },
+  {
+    title: "Burj Khalifa Observation Deck",
+    description: "Aerial views from the world's tallest building.",
+    image: "https://images.unsplash.com/photo-1542086490-11a8654691d0",
+    coordinates: "25.1972° N, 55.2744° E",
+    bestTime: "Blue Hour",
+    difficulty: "Easy",
+    crowdLevel: "High"
+  },
+  {
+    title: "Dubai Marina Walk",
+    description: "Stunning reflections and architectural compositions.",
+    image: "https://images.unsplash.com/photo-1669408276432-10cd3a07fe89",
+    coordinates: "25.0777° N, 55.1304° E",
+    bestTime: "Night",
+    difficulty: "Easy",
+    crowdLevel: "High"
+  },
+  {
+    title: "Palm Jumeirah Boardwalk",
+    description: "Panoramic views of Dubai's coastline and artificial islands.",
+    image: "https://images.unsplash.com/photo-1675154092378-1ca4978ec6a5",
+    coordinates: "25.1124° N, 55.1390° E",
+    bestTime: "Sunrise",
+    difficulty: "Easy",
+    crowdLevel: "Low"
+  }
+];
+
+const photographyTips = [
+  {
+    title: "Desert Haze",
+    content: "Shoot during winter months for clearer air. Use polarizing filters to cut through haze.",
+    icon: "🌇"
+  },
+  {
+    title: "Night Photography",
+    content: "Use f/8-f/11 for sharp cityscapes. Tripod essential for blue hour shots.",
+    icon: "🌃"
+  },
+  {
+    title: "Permissions",
+    content: "Some locations require photography permits. Always check local regulations.",
+    icon: "📝"
+  }
+];
+---
+
+<Layout title={title} description={description}>
+  <CategoryHero
+    title={title}
+    description={description}
+    image="https://images.unsplash.com/photo-1532295454114-d7bc89024613"
+  />
+
+  <article class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="prose prose-lg max-w-none mb-16">
+      <p class="lead text-xl text-gray-600">
+        Dubai's ultramodern architecture and desert setting create a unique playground for urban photography.
+      </p>
+      
+      <h2 class="text-3xl font-bold mt-12 mb-6">Prime Photo Locations</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+      {photoSpots.map(spot => (
+        <PhotoSpot {...spot} />
+      ))}
+    </div>
+
+    <h2 class="text-3xl font-bold mb-6">Photography Tips</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+      {photographyTips.map(tip => (
+        <PhotoTip {...tip} />
+      ))}
+    </div>
+
+    <div class="prose prose-lg max-w-none">
+      <h2>Essential Information</h2>
+      <h3>Best Seasons</h3>
+      <ul>
+        <li>November to March for clearest skies</li>
+        <li>December for Dubai Light Festival</li>
+        <li>Avoid summer months (extreme heat)</li>
+      </ul>
+
+      <h3>Equipment Recommendations</h3>
+      <ul>
+        <li>Wide-angle lens (14-24mm)</li>
+        <li>Sturdy tripod</li>
+        <li>Neutral density filters</li>
+        <li>Lens cleaning kit (for desert dust)</li>
+      </ul>
+
+      <blockquote>
+        <p>"Dubai is where modern architecture meets desert mystique, creating endless possibilities for unique urban photography."</p>
+      </blockquote>
+    </div>
+  </article>
+</Layout>

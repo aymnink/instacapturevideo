@@ -1,0 +1,57 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import CategoryHero from '../../../components/CategoryHero.astro';
+import DestinationCard from '../../../components/DestinationCard.astro';
+
+const title = "Trending Locations";
+const description = "Stay ahead of the curve with the latest trending Instagram-worthy destinations.";
+
+const destinations = [
+  {
+    title: "Kyoto Cherry Blossoms",
+    description: "A photographer's guide to capturing sakura season in Japan's cultural heart.",
+    image: "https://images.unsplash.com/photo-1531986362435-16b427eb9c26",
+    href: "/instagram-destinations/trending/kyoto-cherry-blossoms",
+    location: "Kyoto, Japan"
+  },
+  {
+    title: "Iceland's Diamond Beach",
+    description: "Where black sand meets crystal ice formations.",
+    image: "https://images.unsplash.com/photo-1669408276432-10cd3a07fe89",
+    href: "/instagram-destinations/trending/iceland-diamond-beach",
+    location: "Iceland"
+  },
+  {
+    title: "Cappadocia Balloons",
+    description: "The ultimate guide to photographing Turkey's magical morning ritual.",
+    image: "https://images.unsplash.com/photo-1542086490-11a8654691d0",
+    href: "/instagram-destinations/trending/cappadocia",
+    location: "Turkey"
+  },
+  {
+    title: "Moroccan Desert",
+    description: "Capture the magic of Sahara's endless dunes and starlit skies.",
+    image: "https://images.unsplash.com/photo-1675154092378-1ca4978ec6a5",
+    href: "/instagram-destinations/trending/morocco-desert",
+    location: "Morocco"
+  }
+];
+---
+
+<Layout title={title} description={description}>
+  <CategoryHero
+    title={title}
+    description={description}
+    image="https://images.unsplash.com/photo-1531986362435-16b427eb9c26"
+  />
+
+  <section class="py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {destinations.map(destination => (
+          <DestinationCard {...destination} />
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,129 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import CategoryHero from '../../../components/CategoryHero.astro';
+import PhotoSpot from '../../../components/PhotoSpot.astro';
+import PhotoTip from '../../../components/PhotoTip.astro';
+
+const title = "Morocco's Cultural Photography Guide";
+const description = "Capture the vibrant colors and rich traditions of Morocco's most photogenic cultural locations.";
+
+const photoSpots = [
+  {
+    title: "Chefchaouen Blue City",
+    description: "The famous blue-painted medina offering endless photo opportunities.",
+    image: "https://images.unsplash.com/photo-1532295454114-d7bc89024613",
+    coordinates: "35.1716° N, 5.2697° W",
+    bestTime: "Morning",
+    difficulty: "Easy",
+    crowdLevel: "Moderate"
+  },
+  {
+    title: "Fes Tanneries",
+    description: "Ancient leather tanneries with colorful dye pits.",
+    image: "https://images.unsplash.com/photo-1542086490-11a8654691d0",
+    coordinates: "34.0647° N, 4.9783° W",
+    bestTime: "Morning",
+    difficulty: "Easy",
+    crowdLevel: "High"
+  },
+  {
+    title: "Marrakech Medina",
+    description: "Bustling traditional market with spice displays and craftsmen.",
+    image: "https://images.unsplash.com/photo-1669408276432-10cd3a07fe89",
+    coordinates: "31.6295° N, 7.9811° W",
+    bestTime: "Late Afternoon",
+    difficulty: "Moderate",
+    crowdLevel: "High"
+  },
+  {
+    title: "Sahara Desert Camps",
+    description: "Traditional Berber camps among the golden dunes.",
+    image: "https://images.unsplash.com/photo-1675154092378-1ca4978ec6a5",
+    coordinates: "31.7917° N, 4.7800° W",
+    bestTime: "Sunset/Sunrise",
+    difficulty: "Moderate",
+    crowdLevel: "Low"
+  },
+  {
+    title: "Essaouira Port",
+    description: "Historic fishing port with blue boats and seagulls.",
+    image: "https://images.unsplash.com/photo-1531986362435-16b427eb9c26",
+    coordinates: "31.5085° N, 9.7595° W",
+    bestTime: "Morning",
+    difficulty: "Easy",
+    crowdLevel: "Moderate"
+  }
+];
+
+const photographyTips = [
+  {
+    title: "Cultural Sensitivity",
+    content: "Always ask permission before photographing people. Respect local customs and dress codes.",
+    icon: "🤝"
+  },
+  {
+    title: "Light and Color",
+    content: "Early morning and late afternoon provide the best light for capturing Morocco's vibrant colors.",
+    icon: "🎨"
+  },
+  {
+    title: "Market Photography",
+    content: "Use a fast prime lens (35mm or 50mm) for market scenes. Consider purchasing small items from vendors you photograph.",
+    icon: "📸"
+  }
+];
+---
+
+<Layout title={title} description={description}>
+  <CategoryHero
+    title={title}
+    description={description}
+    image="https://images.unsplash.com/photo-1532295454114-d7bc89024613"
+  />
+
+  <article class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="prose prose-lg max-w-none mb-16">
+      <p class="lead text-xl text-gray-600">
+        Morocco offers a photographer's paradise of colors, textures, and ancient traditions. From the blue city of Chefchaouen to the golden dunes of the Sahara.
+      </p>
+      
+      <h2 class="text-3xl font-bold mt-12 mb-6">Featured Locations</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+      {photoSpots.map(spot => (
+        <PhotoSpot {...spot} />
+      ))}
+    </div>
+
+    <h2 class="text-3xl font-bold mb-6">Photography Tips</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+      {photographyTips.map(tip => (
+        <PhotoTip {...tip} />
+      ))}
+    </div>
+
+    <div class="prose prose-lg max-w-none">
+      <h2>Cultural Photography Guide</h2>
+      <h3>Best Practices</h3>
+      <ul>
+        <li>Learn basic Arabic or French phrases</li>
+        <li>Dress modestly and respectfully</li>
+        <li>Visit markets with a local guide</li>
+        <li>Be prepared to negotiate prices</li>
+      </ul>
+
+      <h3>Equipment Recommendations</h3>
+      <ul>
+        <li>Weather-sealed camera for dust protection</li>
+        <li>35mm or 50mm prime lens for street photography</li>
+        <li>Wide-angle lens for architecture</li>
+        <li>Polarizing filter for desert scenes</li>
+      </ul>
+
+      <blockquote>
+        <p>"Morocco is a feast for the senses. Every corner tells a story through color, texture, and light."</p>
+      </blockquote>
+    </div>
+  </article>
+</Layout>

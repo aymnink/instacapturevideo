@@ -1,0 +1,57 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import CategoryHero from '../../../components/CategoryHero.astro';
+import DestinationCard from '../../../components/DestinationCard.astro';
+
+const title = "Best Photo Spots";
+const description = "Discover the world's most iconic and photogenic locations perfect for your Instagram feed.";
+
+const destinations = [
+  {
+    title: "Santorini's Blue Domes",
+    description: "Capture the iconic white and blue architecture against the Aegean Sea.",
+    image: "https://images.unsplash.com/photo-1611001897293-561e0c30f938",
+    href: "/instagram-destinations/best-photo-spots/santorini",
+    location: "Santorini, Greece"
+  },
+  {
+    title: "Bali Rice Terraces",
+    description: "Explore the stunning emerald-green rice paddies of Tegalalang.",
+    image: "https://images.unsplash.com/photo-1675154092378-1ca4978ec6a5",
+    href: "/instagram-destinations/best-photo-spots/bali",
+    location: "Bali, Indonesia"
+  },
+  {
+    title: "Dubai Skyline",
+    description: "The best spots to photograph the world's most futuristic cityscape.",
+    image: "https://images.unsplash.com/photo-1532295454114-d7bc89024613",
+    href: "/instagram-destinations/best-photo-spots/dubai",
+    location: "Dubai, UAE"
+  },
+  {
+    title: "Antelope Canyon",
+    description: "Capture the mesmerizing light beams in Arizona's slot canyons.",
+    image: "https://images.unsplash.com/photo-1572573309811-48474d1891b7",
+    href: "/instagram-destinations/best-photo-spots/antelope-canyon",
+    location: "Arizona, USA"
+  }
+];
+---
+
+<Layout title={title} description={description}>
+  <CategoryHero
+    title={title}
+    description={description}
+    image="https://images.unsplash.com/photo-1611001897293-561e0c30f938"
+  />
+
+  <section class="py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {destinations.map(destination => (
+          <DestinationCard {...destination} />
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

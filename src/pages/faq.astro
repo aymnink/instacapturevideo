@@ -1,0 +1,132 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CategoryHero from '../components/CategoryHero.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+
+const title = "Frequently Asked Questions";
+const description = "Find answers to common questions about using InstaCapture and downloading Instagram content.";
+
+const breadcrumbs = [
+  { name: "Home", href: "/" },
+  { name: "FAQ", href: "/faq" }
+];
+
+const faqs = [
+  {
+    category: "Instagram Downloader",
+    questions: [
+      {
+        q: "What is an Instagram Downloader?",
+        a: "An Instagram downloader is an online tool that allows users to easily download Instagram photos, videos, and IGTV content. It's designed to help users save media for future use, whether for personal reference or professional purposes. Insta Capture is the ideal tool for this purpose, offering a fast and reliable way to download content directly from Instagram."
+      },
+      {
+        q: "Do I Need to Sign In with My Instagram Account?",
+        a: "No, you don't need to log in with your Instagram account to use Insta Capture. Our tool does not require any personal information, allowing you to download content from Instagram securely and anonymously."
+      },
+      {
+        q: "Can I Save Videos Directly to Instagram?",
+        a: "Unfortunately, Instagram doesn't allow users to download videos directly from their feed or other users' stories. However, you can easily download videos using Insta Capture. Just visit www.instacapture.xyz and follow the simple instructions to save the content you need."
+      },
+      {
+        q: "Do I Have to Pay for the Instagram Video and Photo Download Service?",
+        a: "No, this service is completely free! Insta Capture allows you to download Instagram videos and photos without any cost or download limits."
+      },
+      {
+        q: "Is it Safe to Download Content from Instagram?",
+        a: "Yes, downloading content via Insta Capture is safe. We do not store or misuse any downloaded content."
+      },
+      {
+        q: "Can I Download from a Private Instagram Account?",
+        a: "No, it is not possible to download videos, stories, or photos from private Instagram accounts using Insta Capture. Our tool only supports downloading content from public accounts."
+      },
+      {
+        q: "Can I Save Instagram Stories?",
+        a: "Yes, you can view and download any public Instagram story. To download, simply click on the Story icon on the story, select Copy Link, and paste the link into our website."
+      },
+      {
+        q: "Does the Website Support Downloading from Instagram on PC?",
+        a: "Yes, Insta Capture fully supports downloading from Instagram on PC. You can easily download photos, videos, and stories from Instagram directly to your computer by visiting our website."
+      },
+      {
+        q: "Can You Download from Instagram on Android?",
+        a: "Yes, you can easily download from Instagram on Android. Simply copy the link of the post you wish to download, paste it into the input box on our website, and save it to your device. For more details, visit: Download from Insta on Android."
+      },
+      {
+        q: "Why Is the Instagram Video Playing Instead of Downloading?",
+        a: "This issue can occur due to browser settings. Try right-clicking the download button and selecting 'Save Link As' to download directly."
+      }
+    ]
+  }
+];
+---
+
+<Layout title={title} description={description}>
+  <CategoryHero
+    title={title}
+    description={description}
+    image="https://images.unsplash.com/photo-1611162617474-5b21e879e113"
+  />
+
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <Breadcrumbs paths={breadcrumbs} />
+    
+    <!-- How to Download Section -->
+    <div class="mt-8 mb-16 bg-white rounded-lg shadow-lg p-8">
+      <h2 class="text-2xl font-bold text-gray-900 mb-8">How to Download Using Insta Capture</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="text-center">
+          <div class="bg-brand-blue/5 rounded-lg p-6 mb-4">
+            <img src="/images/step1.png" alt="Step 1" class="mx-auto mb-4" />
+            <h3 class="font-semibold text-brand-blue">Step 1</h3>
+            <p class="text-gray-600">Open the video on Instagram</p>
+          </div>
+        </div>
+        <div class="text-center">
+          <div class="bg-brand-blue/5 rounded-lg p-6 mb-4">
+            <img src="/images/step2.png" alt="Step 2" class="mx-auto mb-4" />
+            <h3 class="font-semibold text-brand-blue">Step 2</h3>
+            <p class="text-gray-600">Click on the three dots and choose Copy Link</p>
+          </div>
+        </div>
+        <div class="text-center">
+          <div class="bg-brand-blue/5 rounded-lg p-6 mb-4">
+            <img src="/images/step3.png" alt="Step 3" class="mx-auto mb-4" />
+            <h3 class="font-semibold text-brand-blue">Step 3</h3>
+            <p class="text-gray-600">Paste the URL and hit the download icon</p>
+          </div>
+        </div>
+        <div class="text-center">
+          <div class="bg-brand-blue/5 rounded-lg p-6 mb-4">
+            <img src="/images/step4.png" alt="Step 4" class="mx-auto mb-4" />
+            <h3 class="font-semibold text-brand-blue">Step 4</h3>
+            <p class="text-gray-600">Click on Download to start downloading</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <div class="space-y-16">
+      {faqs.map(category => (
+        <div>
+          <h2 class="text-2xl font-bold text-gray-900 mb-8">{category.category}</h2>
+          <div class="space-y-8">
+            {category.questions.map(({ q, a }) => (
+              <div class="bg-white rounded-lg shadow-sm p-6 hover:shadow-md transition-shadow">
+                <h3 class="text-lg font-semibold text-brand-blue mb-4">{q}</h3>
+                <p class="text-gray-600">{a}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-16 bg-brand-blue/5 rounded-xl p-8">
+      <h2 class="text-xl font-bold text-brand-blue mb-4">Still Have Questions?</h2>
+      <p class="text-gray-600">
+        Contact our support team for assistance with any technical issues or questions about using InstaCapture.
+      </p>
+    </div>
+  </div>
+</Layout>

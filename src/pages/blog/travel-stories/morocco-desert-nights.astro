@@ -1,0 +1,124 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import CategoryHero from '../../../components/CategoryHero.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import TableOfContents from '../../../components/TableOfContents.astro';
+
+const title = "Desert Nights in Morocco";
+const description = "Camping under the stars in the Sahara and exploring ancient kasbahs.";
+const publishDate = "2024-03-05";
+
+const breadcrumbs = [
+  { name: "Blog", href: "/blog" },
+  { name: "Travel Stories", href: "/blog/travel-stories" },
+  { name: title, href: "" }
+];
+
+const tableOfContents = [
+  { text: "Journey to the Desert", slug: "journey-to-the-desert" },
+  { text: "Erg Chebbi Dunes", slug: "erg-chebbi-dunes" },
+  { text: "Life in the Desert Camp", slug: "life-in-the-desert-camp" },
+  { text: "Night Photography", slug: "night-photography" },
+  { text: "Desert Culture", slug: "desert-culture" },
+  { text: "Practical Information", slug: "practical-information" }
+];
+---
+
+<Layout title={title} description={description}>
+  <Breadcrumbs paths={breadcrumbs} />
+  
+  <CategoryHero
+    title={title}
+    description={description}
+    image="https://images.unsplash.com/photo-1532295454114-d7bc89024613"
+  />
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="lg:grid lg:grid-cols-4 lg:gap-8">
+      <!-- Table of Contents - Desktop -->
+      <div class="hidden lg:block">
+        <div class="sticky top-4">
+          <TableOfContents headings={tableOfContents} />
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="lg:col-span-3">
+        <article class="prose prose-lg max-w-none">
+          <div class="text-sm text-gray-500 mb-8">
+            Published on {new Date(publishDate).toLocaleDateString('en-US', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric'
+            })}
+          </div>
+
+          <p class="lead text-xl">
+            The Sahara Desert offers photographers an otherworldly landscape of endless dunes and star-filled skies. Join me on a journey through Morocco's golden desert and discover the magic of nights spent under the stars.
+          </p>
+
+          <h2 id="journey-to-the-desert">Journey to the Desert</h2>
+          <p>
+            Our adventure began in Marrakech, crossing the Atlas Mountains through winding roads and dramatic gorges. Ancient kasbahs dotted the landscape, their mud-brick walls blending seamlessly with the rocky terrain.
+          </p>
+
+          <h2 id="erg-chebbi-dunes">Erg Chebbi Dunes</h2>
+          <p>
+            As we approached Merzouga, the massive dunes of Erg Chebbi rose from the desert like golden waves. These dunes, reaching heights of up to 150 meters, create an endless playground of light and shadow for photographers.
+          </p>
+
+          <blockquote>
+            <p>"The desert teaches us about silence, light, and the true meaning of infinity."</p>
+          </blockquote>
+
+          <h2 id="life-in-the-desert-camp">Life in the Desert Camp</h2>
+          <p>
+            Our luxury desert camp offered a perfect blend of comfort and authenticity. Traditional Berber tents were equipped with proper beds and en-suite facilities, while maintaining the magical atmosphere of desert camping.
+          </p>
+
+          <h2 id="night-photography">Night Photography</h2>
+          <p>
+            The real magic happens after sunset. With zero light pollution, the Sahara offers some of the clearest night skies in the world. The Milky Way stretches across the horizon, while shooting stars streak through the darkness.
+          </p>
+
+          <h2 id="desert-culture">Desert Culture</h2>
+          <p>
+            Evenings were filled with traditional music around the campfire, with local Berber guides sharing stories and teaching us about desert life. We learned about navigation by stars and the ancient caravan routes that once crossed these sands.
+          </p>
+
+          <h2 id="practical-information">Practical Information</h2>
+          <h3>Best Time to Visit</h3>
+          <ul>
+            <li>October to April for comfortable temperatures</li>
+            <li>Winter months for clearest night skies</li>
+            <li>Avoid summer (extreme heat)</li>
+          </ul>
+
+          <h3>Photography Equipment</h3>
+          <ul>
+            <li>Weather-sealed camera body</li>
+            <li>Wide-angle lens for night sky (14-24mm)</li>
+            <li>Sturdy tripod</li>
+            <li>Lens cleaning kit for sand</li>
+            <li>Multiple batteries</li>
+          </ul>
+
+          <h3>Desert Photography Tips</h3>
+          <ul>
+            <li>Use a polarizing filter during day shoots</li>
+            <li>Protect gear from sand with proper covers</li>
+            <li>Shoot during golden hour for best dune shadows</li>
+            <li>Include camels or people for scale</li>
+          </ul>
+
+          <div class="bg-blue-50 p-6 rounded-lg mt-8">
+            <h3 class="text-xl font-bold mb-4">Plan Your Desert Adventure</h3>
+            <p>
+              For more detailed photography tips and location information, check out our <a href="/travel-guides/culture/morocco">Morocco Photography Guide</a>.
+            </p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</Layout>

@@ -1,0 +1,99 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import CategoryHero from '../../../components/CategoryHero.astro';
+import PhotoSpot from '../../../components/PhotoSpot.astro';
+import PhotoTip from '../../../components/PhotoTip.astro';
+
+const title = "Instagram Guide to Moroccan Riads";
+const description = "The most photogenic traditional houses and courtyards in Morocco.";
+const publishDate = "2024-02-25";
+
+const riads = [
+  {
+    title: "Riad BE Marrakech",
+    description: "Famous for its pink walls and stunning pool reflections.",
+    bestTime: "Morning",
+    tips: "Use symmetry in your compositions with the pool reflections."
+  },
+  {
+    title: "Le Riad Yasmine",
+    description: "Iconic green tile work and palm-fringed pool.",
+    bestTime: "Early Morning",
+    tips: "Shoot from the upper floor looking down at the courtyard."
+  },
+  {
+    title: "Riad Fes",
+    description: "Traditional Andalusian architecture with intricate details.",
+    bestTime: "Afternoon",
+    tips: "Focus on the play of light through carved windows."
+  }
+];
+
+const photographyTips = [
+  {
+    title: "Interior Photography",
+    content: "Use HDR techniques to balance bright courtyards with dark interiors.",
+    icon: "🏰"
+  },
+  {
+    title: "Detail Shots",
+    content: "Look for patterns in tilework and architectural details.",
+    icon: "📷"
+  }
+];
+---
+
+<Layout title={title} description={description}>
+  <CategoryHero
+    title={title}
+    description={description}
+    image="https://images.unsplash.com/photo-1542086490-11a8654691d0"
+  />
+
+  <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="prose prose-lg max-w-none">
+      <div class="text-sm text-gray-500 mb-8">
+        Published on {new Date(publishDate).toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric'
+        })}
+      </div>
+
+      <p class="lead">
+        Moroccan riads offer a photographer's paradise of traditional architecture, intricate details, and peaceful courtyards.
+      </p>
+
+      <h2>Most Photogenic Riads</h2>
+      {riads.map(riad => (
+        <div class="mb-8">
+          <h3>{riad.title}</h3>
+          <p>{riad.description}</p>
+          <ul>
+            <li><strong>Best time to visit:</strong> {riad.bestTime}</li>
+            <li><strong>Photography tips:</strong> {riad.tips}</li>
+          </ul>
+        </div>
+      ))}
+
+      <h2>Photography Tips</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        {photographyTips.map(tip => (
+          <PhotoTip {...tip} />
+        ))}
+      </div>
+
+      <h2>Essential Equipment</h2>
+      <ul>
+        <li>Wide-angle lens (16-35mm)</li>
+        <li>Tripod for low light interiors</li>
+        <li>Polarizing filter</li>
+        <li>Flash for fill light</li>
+      </ul>
+
+      <blockquote>
+        <p>"Each riad tells its own story through light, pattern, and tradition."</p>
+      </blockquote>
+    </div>
+  </article>
+</Layout>

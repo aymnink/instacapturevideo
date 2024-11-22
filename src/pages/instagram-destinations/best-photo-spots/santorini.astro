@@ -1,0 +1,165 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import CategoryHero from '../../../components/CategoryHero.astro';
+import PhotoSpot from '../../../components/PhotoSpot.astro';
+import PhotoTip from '../../../components/PhotoTip.astro';
+
+const title = "Santorini Sunset Photography Guide";
+const description = "Discover the most breathtaking sunset spots and iconic photo locations in Santorini, from blue domes to caldera views.";
+
+const photoSpots = [
+  {
+    title: "Oia Castle Ruins",
+    description: "The most famous sunset viewpoint overlooking the windmills and caldera.",
+    image: "https://images.unsplash.com/photo-1611001897293-561e0c30f938",
+    coordinates: "36.4617° N, 25.3756° E",
+    bestTime: "2 hours before sunset",
+    difficulty: "Easy",
+    crowdLevel: "Extreme"
+  },
+  {
+    title: "Three Blue Domes",
+    description: "Iconic blue-domed churches of St. Spyridon and Anastasios.",
+    image: "https://images.unsplash.com/photo-1542086490-11a8654691d0",
+    coordinates: "36.4615° N, 25.3752° E",
+    bestTime: "Early Morning/Sunset",
+    difficulty: "Moderate",
+    crowdLevel: "High"
+  },
+  {
+    title: "Imerovigli Viewpoint",
+    description: "Elevated caldera views with Skaros Rock silhouette.",
+    image: "https://images.unsplash.com/photo-1669408276432-10cd3a07fe89",
+    coordinates: "36.4350° N, 25.4278° E",
+    bestTime: "Sunset",
+    difficulty: "Easy",
+    crowdLevel: "Moderate"
+  },
+  {
+    title: "Ammoudi Bay",
+    description: "Red cliffs and fishing boats with sunset reflections.",
+    image: "https://images.unsplash.com/photo-1675154092378-1ca4978ec6a5",
+    coordinates: "36.4621° N, 25.3705° E",
+    bestTime: "Late Afternoon",
+    difficulty: "Moderate",
+    crowdLevel: "Moderate"
+  },
+  {
+    title: "Prophet Elias Monastery",
+    description: "Highest point on the island with 360-degree views.",
+    image: "https://images.unsplash.com/photo-1531986362435-16b427eb9c26",
+    coordinates: "36.4006° N, 25.4447° E",
+    bestTime: "Sunset",
+    difficulty: "Easy",
+    crowdLevel: "Low"
+  }
+];
+
+const photographyTips = [
+  {
+    title: "Timing is Everything",
+    content: "Arrive at least 2 hours before sunset to secure prime spots, especially in Oia.",
+    icon: "⏰"
+  },
+  {
+    title: "Equipment Essentials",
+    content: "Bring ND filters for balanced exposures between bright sky and dark caldera.",
+    icon: "📸"
+  },
+  {
+    title: "Composition Tips",
+    content: "Use white buildings to frame the sunset. Look for leading lines in staircases.",
+    icon: "🎨"
+  }
+];
+---
+
+<Layout title={title} description={description}>
+  <CategoryHero
+    title={title}
+    description={description}
+    image="https://images.unsplash.com/photo-1611001897293-561e0c30f938"
+  />
+
+  <article class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="prose prose-lg max-w-none mb-16">
+      <p class="lead text-xl text-gray-600">
+        Santorini's sunsets are world-renowned, painting the white-washed buildings and caldera in golden hues.
+      </p>
+      
+      <h2 class="text-3xl font-bold mt-12 mb-6">Prime Photography Locations</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+      {photoSpots.map(spot => (
+        <PhotoSpot {...spot} />
+      ))}
+    </div>
+
+    <h2 class="text-3xl font-bold mb-6">Photography Tips</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+      {photographyTips.map(tip => (
+        <PhotoTip {...tip} />
+      ))}
+    </div>
+
+    <div class="prose prose-lg max-w-none">
+      <h2>Essential Information</h2>
+      <h3>Best Times to Visit</h3>
+      <ul>
+        <li>April-May for mild weather and fewer crowds</li>
+        <li>September-October for warm seas and clear skies</li>
+        <li>Blue hour (after sunset) for balanced lighting</li>
+      </ul>
+
+      <h3>Equipment Recommendations</h3>
+      <ul>
+        <li>Wide-angle lens (16-35mm)</li>
+        <li>Medium zoom (24-70mm)</li>
+        <li>Neutral density filters</li>
+        <li>Polarizing filter</li>
+        <li>Sturdy tripod</li>
+      </ul>
+
+      <h3>Alternative Viewpoints</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Location</th>
+            <th>Best For</th>
+            <th>Crowd Level</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Fira Trail</td>
+            <td>Walking shots, caldera views</td>
+            <td>Moderate</td>
+          </tr>
+          <tr>
+            <td>Santo Wines</td>
+            <td>Sunset with wine tasting</td>
+            <td>High</td>
+          </tr>
+          <tr>
+            <td>Akrotiri Lighthouse</td>
+            <td>Southern panoramas</td>
+            <td>Low</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <blockquote>
+        <p>"Santorini's sunsets are not just a daily event, but a celebration of light, color, and architecture that photographers dream of capturing."</p>
+      </blockquote>
+
+      <h3>Local Tips</h3>
+      <ul>
+        <li>Book a sunset cruise for unique perspectives from the water</li>
+        <li>Visit popular spots during sunrise for fewer crowds</li>
+        <li>Consider rooftop restaurants for unobstructed views (with dinner reservation)</li>
+        <li>Use the walking trails between towns for unique vantage points</li>
+      </ul>
+    </div>
+  </article>
+</Layout>

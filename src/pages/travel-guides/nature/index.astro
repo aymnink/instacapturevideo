@@ -1,0 +1,64 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import CategoryHero from '../../../components/CategoryHero.astro';
+import DestinationCard from '../../../components/DestinationCard.astro';
+
+const title = "Nature Photography Guides";
+const description = "Comprehensive guides for capturing Earth's most stunning natural landscapes.";
+
+const destinations = [
+  {
+    title: "Bali's Waterfalls",
+    description: "Discover hidden cascades and perfect photo opportunities.",
+    image: "https://images.unsplash.com/photo-1675154092378-1ca4978ec6a5",
+    href: "/travel-guides/nature/bali-waterfalls",
+    location: "Indonesia"
+  },
+  {
+    title: "Swiss Alps",
+    description: "Mountain photography in the heart of Europe.",
+    image: "https://images.unsplash.com/photo-1531986362435-16b427eb9c26",
+    href: "/travel-guides/nature/swiss-alps",
+    location: "Switzerland"
+  },
+  {
+    title: "Iceland's Landscapes",
+    description: "Capturing the land of fire and ice.",
+    image: "https://images.unsplash.com/photo-1669408276432-10cd3a07fe89",
+    href: "/travel-guides/nature/iceland",
+    location: "Iceland"
+  },
+  {
+    title: "New Zealand Fjords",
+    description: "Photographing Milford Sound and beyond.",
+    image: "https://images.unsplash.com/photo-1542086490-11a8654691d0",
+    href: "/travel-guides/nature/new-zealand",
+    location: "New Zealand"
+  },
+  {
+    title: "Canadian Rockies",
+    description: "Mountain lakes and dramatic peaks guide.",
+    image: "https://images.unsplash.com/photo-1532295454114-d7bc89024613",
+    href: "/travel-guides/nature/canadian-rockies",
+    location: "Canada"
+  }
+];
+---
+
+<Layout title={title} description={description}>
+  <CategoryHero
+    title={title}
+    description={description}
+    image="https://images.unsplash.com/photo-1675154092378-1ca4978ec6a5"
+  />
+
+  <section class="py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {destinations.map(destination => (
+          <DestinationCard {...destination} />
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,101 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import CategoryHero from '../../../components/CategoryHero.astro';
+import PhotoSpot from '../../../components/PhotoSpot.astro';
+import PhotoTip from '../../../components/PhotoTip.astro';
+
+const title = "Kyoto Cherry Blossoms Photography Guide";
+const description = "Master the art of capturing Japan's magical sakura season in Kyoto's most photogenic locations.";
+
+const photoSpots = [
+  {
+    title: "Philosopher's Path",
+    description: "A picturesque stone path lined with hundreds of cherry trees along a peaceful canal.",
+    image: "https://images.unsplash.com/photo-1531986362435-16b427eb9c26",
+    coordinates: "35.0274° N, 135.7940° E",
+    bestTime: "Early Morning",
+    difficulty: "Easy",
+    crowdLevel: "High"
+  },
+  {
+    title: "Maruyama Park",
+    description: "Home to Kyoto's most famous weeping cherry tree, spectacularly lit at night.",
+    image: "https://images.unsplash.com/photo-1523474438810-b04a2480633c",
+    coordinates: "35.0038° N, 135.7812° E",
+    bestTime: "Night",
+    difficulty: "Easy",
+    crowdLevel: "High"
+  }
+];
+
+const photographyTips = [
+  {
+    title: "Timing is Everything",
+    content: "Cherry blossoms peak for only about a week. Follow local bloom forecasts and be ready to adjust your schedule.",
+    icon: "🌸"
+  },
+  {
+    title: "Lighting Tips",
+    content: "Early morning provides soft light and fewer crowds. For night shots, use f/2.8 or wider to capture illuminated trees.",
+    icon: "💡"
+  },
+  {
+    title: "Composition Ideas",
+    content: "Include traditional architecture, frame blossoms against blue sky, or capture falling petals with fast shutter speeds.",
+    icon: "📸"
+  }
+];
+---
+
+<Layout title={title} description={description}>
+  <CategoryHero
+    title={title}
+    description={description}
+    image="https://images.unsplash.com/photo-1531986362435-16b427eb9c26"
+  />
+
+  <article class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="prose prose-lg max-w-none mb-16">
+      <p class="lead text-xl text-gray-600">
+        Kyoto's cherry blossom season transforms the ancient capital into a pink wonderland, offering photographers countless opportunities for unique shots.
+      </p>
+      
+      <h2 class="text-3xl font-bold mt-12 mb-6">Prime Photography Locations</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+      {photoSpots.map(spot => (
+        <PhotoSpot {...spot} />
+      ))}
+    </div>
+
+    <h2 class="text-3xl font-bold mb-6">Photography Tips</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+      {photographyTips.map(tip => (
+        <PhotoTip {...tip} />
+      ))}
+    </div>
+
+    <div class="prose prose-lg max-w-none">
+      <h2>Planning Your Visit</h2>
+      <h3>Seasonal Timing</h3>
+      <ul>
+        <li>Late March to mid-April (varies yearly)</li>
+        <li>Book accommodations months in advance</li>
+        <li>Follow Japanese meteorological websites for bloom forecasts</li>
+      </ul>
+
+      <h3>Photography Equipment</h3>
+      <ul>
+        <li>Versatile zoom lens (24-70mm recommended)</li>
+        <li>Macro lens for close-up blossom details</li>
+        <li>Polarizing filter to enhance sky contrast</li>
+        <li>Lightweight tripod for dawn/dusk shots</li>
+      </ul>
+
+      <blockquote>
+        <p>"Patience and planning are key during sakura season. The fleeting nature of the blossoms makes each shot precious."</p>
+      </blockquote>
+    </div>
+  </article>
+</Layout>

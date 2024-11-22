@@ -1,0 +1,110 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import CategoryHero from '../../../components/CategoryHero.astro';
+import PhotoSpot from '../../../components/PhotoSpot.astro';
+import PhotoTip from '../../../components/PhotoTip.astro';
+
+const title = "Ultimate Guide to Bali's Instagram Hotspots";
+const description = "From hidden waterfalls to iconic rice terraces, discover Bali's most photogenic locations.";
+const publishDate = "2024-03-10";
+
+const locations = [
+  {
+    title: "Tegalalang Rice Terraces",
+    description: "Iconic emerald-green terraces with traditional farming methods.",
+    bestTime: "Sunrise",
+    tips: "Use a drone for aerial shots, or find high vantage points for sweeping views."
+  },
+  {
+    title: "Gates of Heaven at Lempuyang Temple",
+    description: "Famous split gates with Mount Agung backdrop.",
+    bestTime: "Early Morning",
+    tips: "Arrive before sunrise to avoid crowds. Bring a tripod for reflection shots."
+  },
+  {
+    title: "Nusa Penida Island",
+    description: "Dramatic cliffs and pristine beaches including Kelingking Beach.",
+    bestTime: "Morning",
+    tips: "Use a wide-angle lens to capture the scale of the landscapes."
+  },
+  {
+    title: "Handara Gate",
+    description: "Iconic temple entrance in misty mountains.",
+    bestTime: "Early Morning",
+    tips: "Visit on cloudy days for atmospheric shots with fog."
+  }
+];
+
+const photographyTips = [
+  {
+    title: "Lighting",
+    content: "Early morning offers the best light and fewer tourists at popular spots.",
+    icon: "🌅"
+  },
+  {
+    title: "Weather",
+    content: "Plan around the rainy season (October-April). Morning rain often clears by afternoon.",
+    icon: "🌦"
+  },
+  {
+    title: "Local Etiquette",
+    content: "Always dress respectfully at temples. Bring sarongs or rent them on-site.",
+    icon: "🙏"
+  }
+];
+---
+
+<Layout title={title} description={description}>
+  <CategoryHero
+    title={title}
+    description={description}
+    image="https://images.unsplash.com/photo-1675154092378-1ca4978ec6a5"
+  />
+
+  <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="prose prose-lg max-w-none">
+      <div class="text-sm text-gray-500 mb-8">
+        Published on {new Date(publishDate).toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric'
+        })}
+      </div>
+
+      <p class="lead">
+        Bali's diverse landscapes offer endless opportunities for stunning photography, from ancient temples to pristine beaches.
+      </p>
+
+      <h2>Must-Visit Locations</h2>
+      {locations.map(location => (
+        <div class="mb-8">
+          <h3>{location.title}</h3>
+          <p>{location.description}</p>
+          <ul>
+            <li><strong>Best time to visit:</strong> {location.bestTime}</li>
+            <li><strong>Photography tips:</strong> {location.tips}</li>
+          </ul>
+        </div>
+      ))}
+
+      <h2>Photography Tips</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        {photographyTips.map(tip => (
+          <PhotoTip {...tip} />
+        ))}
+      </div>
+
+      <h2>Essential Equipment</h2>
+      <ul>
+        <li>Wide-angle lens (16-35mm)</li>
+        <li>Drone (with proper permits)</li>
+        <li>Neutral density filters</li>
+        <li>Weather-sealed gear</li>
+      </ul>
+
+      <blockquote>
+        <p>"Bali's magic lies in its ability to blend natural beauty with cultural richness, creating endless photo opportunities."</p>
+      </blockquote>
+    </div>
+  </article>
+</Layout>

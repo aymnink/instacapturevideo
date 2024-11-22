@@ -1,0 +1,126 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import CategoryHero from '../../../components/CategoryHero.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import TableOfContents from '../../../components/TableOfContents.astro';
+
+const title = "Island Hopping in Greece";
+const description = "A photographic journey through the Cyclades islands.";
+const publishDate = "2024-03-01";
+
+const breadcrumbs = [
+  { name: "Blog", href: "/blog" },
+  { name: "Travel Stories", href: "/blog/travel-stories" },
+  { name: title, href: "" }
+];
+
+const tableOfContents = [
+  { text: "Planning the Route", slug: "planning-the-route" },
+  { text: "Santorini's Magic", slug: "santorinis-magic" },
+  { text: "Milos Discoveries", slug: "milos-discoveries" },
+  { text: "Hidden Folegandros", slug: "hidden-folegandros" },
+  { text: "Photography Tips", slug: "photography-tips" },
+  { text: "Island Hopping Guide", slug: "island-hopping-guide" }
+];
+---
+
+<Layout title={title} description={description}>
+  <Breadcrumbs paths={breadcrumbs} />
+  
+  <CategoryHero
+    title={title}
+    description={description}
+    image="https://images.unsplash.com/photo-1611001897293-561e0c30f938"
+  />
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="lg:grid lg:grid-cols-4 lg:gap-8">
+      <!-- Table of Contents - Desktop -->
+      <div class="hidden lg:block">
+        <div class="sticky top-4">
+          <TableOfContents headings={tableOfContents} />
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="lg:col-span-3">
+        <article class="prose prose-lg max-w-none">
+          <div class="text-sm text-gray-500 mb-8">
+            Published on {new Date(publishDate).toLocaleDateString('en-US', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric'
+            })}
+          </div>
+
+          <p class="lead text-xl">
+            The Cyclades islands offer photographers an endless canvas of whitewashed architecture, dramatic cliffs, and crystal-clear waters. Join me on a journey through three distinct islands, each with its own unique character.
+          </p>
+
+          <h2 id="planning-the-route">Planning the Route</h2>
+          <p>
+            Our journey began in Athens, where we caught a morning ferry to Santorini. The ferry routes through the Cyclades create a natural island-hopping path, with each stop offering new perspectives and photo opportunities.
+          </p>
+
+          <h2 id="santorinis-magic">Santorini's Magic</h2>
+          <p>
+            While Santorini's famous blue domes are a must-photograph, we discovered countless hidden corners in villages like Imerovigli and Firostefani. The morning light on the caldera creates perfect conditions for landscape photography.
+          </p>
+
+          <blockquote>
+            <p>"Each Cycladic island tells its own story through light, architecture, and the endless blue of the Aegean."</p>
+          </blockquote>
+
+          <h2 id="milos-discoveries">Milos Discoveries</h2>
+          <p>
+            Milos surprised us with its lunar landscapes and colorful fishing villages. The traditional syrmata (fishermen's houses) carved into the rocks create unique photo opportunities, especially during golden hour.
+          </p>
+
+          <h2 id="hidden-folegandros">Hidden Folegandros</h2>
+          <p>
+            Less visited than its neighbors, Folegandros offers authentic island life and dramatic cliff-top villages. The Chora, perched high above the sea, provides stunning sunset views and opportunities for street photography.
+          </p>
+
+          <h2 id="photography-tips">Photography Tips</h2>
+          <ul>
+            <li>Use polarizing filters for deep blue skies and clear water</li>
+            <li>Early morning light best captures white architecture</li>
+            <li>Include local elements like doors and cats for context</li>
+            <li>Sunset creates golden reflections on white walls</li>
+          </ul>
+
+          <h2 id="island-hopping-guide">Island Hopping Guide</h2>
+          <h3>Best Times to Visit</h3>
+          <ul>
+            <li>May-June for mild weather and fewer crowds</li>
+            <li>September-October for warm seas and clear skies</li>
+            <li>Avoid August (peak season, crowded)</li>
+          </ul>
+
+          <h3>Transportation Tips</h3>
+          <ul>
+            <li>Book ferry tickets in advance</li>
+            <li>Consider flying between some islands</li>
+            <li>Rent scooters for island exploration</li>
+          </ul>
+
+          <h3>Photography Equipment</h3>
+          <ul>
+            <li>Wide-angle lens (16-35mm)</li>
+            <li>Standard zoom (24-70mm)</li>
+            <li>Polarizing filter</li>
+            <li>Neutral density filters</li>
+            <li>Lightweight tripod</li>
+          </ul>
+
+          <div class="bg-blue-50 p-6 rounded-lg mt-8">
+            <h3 class="text-xl font-bold mb-4">Planning Your Greek Adventure?</h3>
+            <p>
+              Check out our detailed <a href="/instagram-destinations/best-photo-spots/santorini">Santorini Photography Guide</a> for more specific location tips and technical advice.
+            </p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</Layout>

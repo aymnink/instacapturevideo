@@ -1,0 +1,110 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import CategoryHero from '../../../components/CategoryHero.astro';
+import PhotoSpot from '../../../components/PhotoSpot.astro';
+import PhotoTip from '../../../components/PhotoTip.astro';
+
+const title = "Antelope Canyon Photography Guide";
+const description = "Capture the mesmerizing light beams and flowing sandstone formations of Arizona's most photogenic slot canyon.";
+
+const photoSpots = [
+  {
+    title: "Upper Antelope Canyon",
+    description: "Famous for light beams and easier access.",
+    image: "https://images.unsplash.com/photo-1572573309811-48474d1891b7",
+    coordinates: "36.8619° N, 111.3743° W",
+    bestTime: "10am-1pm",
+    difficulty: "Easy",
+    crowdLevel: "High"
+  },
+  {
+    title: "Lower Antelope Canyon",
+    description: "Narrower passages with unique formations.",
+    image: "https://images.unsplash.com/photo-1542086490-11a8654691d0",
+    coordinates: "36.8619° N, 111.3743° W",
+    bestTime: "Morning",
+    difficulty: "Moderate",
+    crowdLevel: "High"
+  },
+  {
+    title: "Rattlesnake Canyon",
+    description: "Less crowded alternative with similar formations.",
+    image: "https://images.unsplash.com/photo-1669408276432-10cd3a07fe89",
+    coordinates: "36.8619° N, 111.3743° W",
+    bestTime: "Midday",
+    difficulty: "Moderate",
+    crowdLevel: "Low"
+  }
+];
+
+const photographyTips = [
+  {
+    title: "Light Beams",
+    content: "Visit during peak hours for best light beam visibility. Book photography tours in advance.",
+    icon: "☀️"
+  },
+  {
+    title: "Camera Settings",
+    content: "Use tripod when possible. ISO 400-800, f/8, varying shutter speeds.",
+    icon: "📸"
+  },
+  {
+    title: "Dust Protection",
+    content: "Bring protective gear for your camera. Change lenses minimally.",
+    icon: "🌪"
+  }
+];
+---
+
+<Layout title={title} description={description}>
+  <CategoryHero
+    title={title}
+    description={description}
+    image="https://images.unsplash.com/photo-1572573309811-48474d1891b7"
+  />
+
+  <article class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="prose prose-lg max-w-none mb-16">
+      <p class="lead text-xl text-gray-600">
+        Antelope Canyon offers photographers a unique opportunity to capture nature's artistry in sandstone.
+      </p>
+      
+      <h2 class="text-3xl font-bold mt-12 mb-6">Prime Photo Locations</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+      {photoSpots.map(spot => (
+        <PhotoSpot {...spot} />
+      ))}
+    </div>
+
+    <h2 class="text-3xl font-bold mb-6">Photography Tips</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+      {photographyTips.map(tip => (
+        <PhotoTip {...tip} />
+      ))}
+    </div>
+
+    <div class="prose prose-lg max-w-none">
+      <h2>Essential Information</h2>
+      <h3>Best Times to Visit</h3>
+      <ul>
+        <li>March to October for light beams</li>
+        <li>Peak hours (10am-1pm) for best lighting</li>
+        <li>Shoulder season for fewer crowds</li>
+      </ul>
+
+      <h3>Equipment Recommendations</h3>
+      <ul>
+        <li>Wide-angle lens (16-35mm)</li>
+        <li>Sturdy tripod (if allowed)</li>
+        <li>Lens cleaning supplies</li>
+        <li>Camera rain cover for sand protection</li>
+      </ul>
+
+      <blockquote>
+        <p>"Antelope Canyon teaches photographers the art of working with available light in nature's most beautiful studio."</p>
+      </blockquote>
+    </div>
+  </article>
+</Layout>

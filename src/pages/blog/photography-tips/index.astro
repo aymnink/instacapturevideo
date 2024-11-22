@@ -1,0 +1,169 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import CategoryHero from '../../../components/CategoryHero.astro';
+import { getImageWithParams } from '../../../utils/images';
+
+const title = "Photography Tips & Tutorials";
+const description = "Expert photography guides, technical tutorials, and creative inspiration for travel and landscape photographers.";
+
+const guides = [
+  {
+    title: "Capturing the Northern Lights: Iceland Edition",
+    description: "Expert tips for photographing the aurora borealis in Iceland's dramatic landscapes.",
+    image: "https://images.unsplash.com/photo-1669408276432-10cd3a07fe89",
+    date: "2024-03-05",
+    href: "/blog/photography-tips/northern-lights-iceland",
+    category: "Night Photography"
+  },
+  {
+    title: "Dubai's Hidden Photo Spots",
+    description: "Discover secret locations for unique Dubai skyline shots beyond the obvious.",
+    image: "https://images.unsplash.com/photo-1532295454114-d7bc89024613",
+    date: "2024-03-01",
+    href: "/blog/photography-tips/dubai-hidden-spots",
+    category: "Urban Photography"
+  },
+  {
+    title: "Tokyo Street Photography Guide",
+    description: "Master the art of capturing Tokyo's vibrant street life and neon nights.",
+    image: "https://images.unsplash.com/photo-1523474438810-b04a2480633c",
+    date: "2024-02-28",
+    href: "/blog/photography-tips/tokyo-streets",
+    category: "Street Photography"
+  },
+  {
+    title: "Capturing Cherry Blossoms in Japan",
+    description: "A photographer's guide to sakura season across Japan.",
+    image: "https://images.unsplash.com/photo-1531986362435-16b427eb9c26",
+    date: "2024-02-20",
+    href: "/blog/photography-tips/japan-cherry-blossoms",
+    category: "Seasonal Photography"
+  },
+  {
+    title: "Hidden Gems of Paris Photography",
+    description: "Secret spots and unique angles in the City of Light.",
+    image: "https://images.unsplash.com/photo-1595039838779-f3780873afdd",
+    date: "2024-02-15",
+    href: "/blog/photography-tips/paris-hidden-spots",
+    category: "Urban Photography"
+  },
+  {
+    title: "Mastering Long Exposure Photography",
+    description: "Technical guide to creating stunning long exposure shots of waterfalls and cityscapes.",
+    image: "https://images.unsplash.com/photo-1675154092378-1ca4978ec6a5",
+    date: "2024-02-10",
+    href: "/blog/photography-tips/long-exposure-guide",
+    category: "Technical Tutorials"
+  }
+];
+
+const categories = [
+  "Night Photography",
+  "Urban Photography",
+  "Street Photography",
+  "Landscape Photography",
+  "Technical Tutorials",
+  "Seasonal Photography"
+];
+---
+
+<Layout title={title} description={description}>
+  <CategoryHero
+    title={title}
+    description={description}
+    image="https://images.unsplash.com/photo-1542086490-11a8654691d0"
+  />
+
+  <section class="py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Categories -->
+      <div class="mb-12">
+        <h2 class="text-2xl font-bold mb-6">Browse by Category</h2>
+        <div class="flex flex-wrap gap-4">
+          {categories.map(category => (
+            <a
+              href={`#${category.toLowerCase().replace(' ', '-')}`}
+              class="px-4 py-2 bg-gray-100 hover:bg-blue-100 rounded-full text-sm font-medium transition-colors"
+            >
+              {category}
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <!-- Featured Articles -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {guides.map(guide => (
+          <article class="bg-white rounded-lg shadow-md overflow-hidden">
+            <img 
+              src={getImageWithParams(guide.image, 600)}
+              alt={guide.title}
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-6">
+              <div class="flex items-center text-sm text-gray-500 mb-2">
+                <time datetime={guide.date}>
+                  {new Date(guide.date).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                  })}
+                </time>
+                <span class="mx-2">·</span>
+                <span class="text-blue-600 font-medium">{guide.category}</span>
+              </div>
+              <h3 class="text-xl font-bold mb-2">
+                <a href={guide.href} class="hover:text-blue-600 transition-colors">
+                  {guide.title}
+                </a>
+              </h3>
+              <p class="text-gray-600">{guide.description}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <!-- Newsletter Section -->
+      <div class="mt-16 bg-blue-50 rounded-xl p-8">
+        <div class="max-w-2xl mx-auto text-center">
+          <h2 class="text-2xl font-bold mb-4">Get Photography Tips in Your Inbox</h2>
+          <p class="text-gray-600 mb-6">
+            Subscribe to our newsletter for weekly photography tips, tutorials, and inspiration.
+          </p>
+          <form class="flex flex-col sm:flex-row gap-4 justify-center">
+            <input
+              type="email"
+              placeholder="Enter your email"
+              class="px-4 py-3 rounded-lg flex-grow max-w-md"
+            />
+            <button
+              type="submit"
+              class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
+            >
+              Subscribe
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Coming Soon -->
+      <div class="mt-16">
+        <h2 class="text-2xl font-bold mb-6">Coming Soon</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="font-semibold mb-2">Advanced Composition Techniques</h3>
+            <p class="text-gray-600">Master the art of visual storytelling through composition.</p>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="font-semibold mb-2">Post-Processing Workflows</h3>
+            <p class="text-gray-600">Step-by-step guides for editing travel and landscape photos.</p>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-sm">
+            <h3 class="font-semibold mb-2">Drone Photography Guide</h3>
+            <p class="text-gray-600">Tips for capturing stunning aerial perspectives.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout></content>

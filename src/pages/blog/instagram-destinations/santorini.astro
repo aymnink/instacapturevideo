@@ -1,0 +1,192 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import CategoryHero from '../../../components/CategoryHero.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+import PhotoSpot from '../../../components/PhotoSpot.astro';
+import PhotoTip from '../../../components/PhotoTip.astro';
+
+const title = "Santorini's Most Instagrammable Spots";
+const description = "A complete guide to capturing the perfect photos in Greece's most photogenic island.";
+const publishDate = "2024-03-15";
+
+const breadcrumbs = [
+  { name: "Home", href: "/" },
+  { name: "Blog", href: "/blog" },
+  { name: "Instagram Destinations", href: "/blog/instagram-destinations" },
+  { name: "Santorini", href: "/blog/instagram-destinations/santorini" }
+];
+
+const photoSpots = [
+  {
+    title: "Oia Blue Domes",
+    description: "The iconic view of Santorini's blue-domed churches against white buildings.",
+    image: "https://images.unsplash.com/photo-1611001897293-561e0c30f938",
+    coordinates: "36.4617° N, 25.3756° E",
+    bestTime: "Sunrise",
+    difficulty: "Easy",
+    crowdLevel: "High"
+  },
+  {
+    title: "Skaros Rock",
+    description: "Ancient fortress ruins with panoramic caldera views.",
+    image: "https://images.unsplash.com/photo-1542086490-11a8654691d0",
+    coordinates: "36.4350° N, 25.4278° E",
+    bestTime: "Sunset",
+    difficulty: "Moderate",
+    crowdLevel: "Low"
+  },
+  {
+    title: "Ammoudi Bay",
+    description: "Red cliffs and traditional fishing boats with sunset views.",
+    image: "https://images.unsplash.com/photo-1669408276432-10cd3a07fe89",
+    coordinates: "36.4621° N, 25.3705° E",
+    bestTime: "Late Afternoon",
+    difficulty: "Moderate",
+    crowdLevel: "Moderate"
+  },
+  {
+    title: "Imerovigli Infinity Pools",
+    description: "Luxury hotel pools with caldera views.",
+    image: "https://images.unsplash.com/photo-1675154092378-1ca4978ec6a5",
+    coordinates: "36.4350° N, 25.4278° E",
+    bestTime: "Morning/Sunset",
+    difficulty: "Easy",
+    crowdLevel: "Low"
+  }
+];
+
+const photographyTips = [
+  {
+    title: "Best Time to Shoot",
+    content: "Visit popular spots during sunrise to avoid crowds. Golden hour provides perfect lighting for white buildings.",
+    icon: "🌅"
+  },
+  {
+    title: "Composition Tips",
+    content: "Use leading lines in staircases and pathways. Frame blue domes against the sky or sea.",
+    icon: "📸"
+  },
+  {
+    title: "Equipment",
+    content: "Bring a wide-angle lens for architecture and a polarizing filter for deep blue skies.",
+    icon: "🎥"
+  }
+];
+
+const sections = [
+  {
+    title: "When to Visit",
+    content: [
+      "April-May for mild weather and fewer crowds",
+      "September-October for warm seas and clear skies",
+      "Avoid peak season (July-August) for better photos"
+    ]
+  },
+  {
+    title: "Getting Around",
+    content: [
+      "Rent an ATV for easy access to photo spots",
+      "Book sunset spots in advance",
+      "Start early to avoid harsh midday sun"
+    ]
+  }
+];
+---
+
+<Layout title={title} description={description}>
+  <CategoryHero
+    title={title}
+    description={description}
+    image="https://images.unsplash.com/photo-1611001897293-561e0c30f938"
+  />
+
+  <article class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <Breadcrumbs paths={breadcrumbs} />
+
+    <div class="mt-8 prose prose-lg max-w-none">
+      <div class="text-sm text-gray-500 mb-8">
+        Published on {new Date(publishDate).toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric'
+        })}
+      </div>
+
+      <p class="lead text-xl text-gray-600 mb-12">
+        From iconic blue domes to hidden sunset spots, discover the most photogenic locations in Santorini and learn how to capture them perfectly.
+      </p>
+
+      <!-- Photo Spots -->
+      <h2 class="text-3xl font-bold mb-8">Best Photo Locations</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+        {photoSpots.map(spot => (
+          <PhotoSpot {...spot} />
+        ))}
+      </div>
+
+      <!-- Photography Tips -->
+      <h2 class="text-3xl font-bold mb-8">Photography Tips</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+        {photographyTips.map(tip => (
+          <PhotoTip {...tip} />
+        ))}
+      </div>
+
+      <!-- Additional Sections -->
+      {sections.map(section => (
+        <div class="mb-12">
+          <h2 class="text-2xl font-bold mb-4">{section.title}</h2>
+          <ul class="list-disc pl-6 space-y-2">
+            {section.content.map(item => (
+              <li class="text-gray-600">{item}</li>
+            ))}
+          </ul>
+        </div>
+      ))}
+
+      <!-- Equipment Recommendations -->
+      <div class="bg-gray-50 rounded-lg p-8 mb-12">
+        <h2 class="text-2xl font-bold mb-6">Essential Camera Gear</h2>
+        <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <li class="flex items-center space-x-3">
+            <span class="text-brand-blue">•</span>
+            <span>Wide-angle lens (16-35mm)</span>
+          </li>
+          <li class="flex items-center space-x-3">
+            <span class="text-brand-blue">•</span>
+            <span>Polarizing filter</span>
+          </li>
+          <li class="flex items-center space-x-3">
+            <span class="text-brand-blue">•</span>
+            <span>Neutral density filters</span>
+          </li>
+          <li class="flex items-center space-x-3">
+            <span class="text-brand-blue">•</span>
+            <span>Sturdy tripod</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Quote -->
+      <blockquote class="bg-brand-blue/5 rounded-xl p-8 mb-12">
+        <p class="text-xl italic text-gray-700">
+          "Santorini's beauty lies not just in its famous blue domes, but in the way light plays across its whitewashed walls and the drama of its volcanic landscape."
+        </p>
+      </blockquote>
+
+      <!-- Call to Action -->
+      <div class="bg-brand-blue/5 rounded-xl p-8">
+        <h2 class="text-xl font-bold text-brand-blue mb-4">Save Inspiration for Later</h2>
+        <p class="text-gray-600 mb-6">
+          Use InstaCapture to download and save stunning Santorini photos for inspiration and reference.
+        </p>
+        <a 
+          href="/tools/instagram-downloader" 
+          class="inline-block bg-brand-blue text-white px-6 py-3 rounded-lg font-semibold hover:bg-brand-blue/90 transition-colors"
+        >
+          Try InstaCapture Now
+        </a>
+      </div>
+    </div>
+  </article>
+</Layout>

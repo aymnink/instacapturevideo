@@ -1,0 +1,96 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import CategoryHero from '../../../components/CategoryHero.astro';
+
+const title = "10 Most Instagrammable Spots in Santorini";
+const description = "Beyond the blue domes: discovering unique photo locations in Greece's most photogenic island.";
+const publishDate = "2024-03-15";
+
+const spots = [
+  {
+    title: "Blue Domes of Oia",
+    description: "The iconic view of Santorini's blue-domed churches against the white buildings.",
+    bestTime: "Early morning or late afternoon",
+    tips: "Use a wide-angle lens to capture multiple domes in one shot. Visit during shoulder season for fewer crowds."
+  },
+  {
+    title: "Skaros Rock",
+    description: "Ancient fortress ruins with panoramic caldera views.",
+    bestTime: "Golden hour",
+    tips: "Hike early to avoid the heat. Bring water and comfortable shoes."
+  }
+  // More spots...
+];
+---
+
+<Layout title={title} description={description}>
+  <CategoryHero
+    title={title}
+    description={description}
+    image="https://images.unsplash.com/photo-1611001897293-561e0c30f938"
+  />
+
+  <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="prose prose-lg max-w-none">
+      <div class="text-sm text-gray-500 mb-8">
+        Published on {new Date(publishDate).toLocaleDateString('en-US', {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric'
+        })}
+      </div>
+
+      <p class="lead">
+        Santorini's stunning white-washed buildings, blue domes, and dramatic caldera views make it one of the most photographed destinations in the world. But beyond the famous postcard shots, there are countless hidden spots waiting to be discovered.
+      </p>
+
+      <h2>Why Santorini is Instagram Paradise</h2>
+      <p>
+        With its unique architecture, dramatic landscapes, and perfect lighting conditions, Santorini offers photographers an endless array of possibilities. The contrast between the white buildings and the deep blue sea creates a natural color palette that's instantly recognizable and highly appealing on social media.
+      </p>
+
+      <h2>Best Photo Locations</h2>
+      {spots.map(spot => (
+        <div class="mb-8">
+          <h3>{spot.title}</h3>
+          <p>{spot.description}</p>
+          <ul>
+            <li><strong>Best time to visit:</strong> {spot.bestTime}</li>
+            <li><strong>Photography tips:</strong> {spot.tips}</li>
+          </ul>
+        </div>
+      ))}
+
+      <h2>Photography Tips for Santorini</h2>
+      <ul>
+        <li>Visit popular spots during sunrise to avoid crowds</li>
+        <li>Use a polarizing filter to enhance the blue sky and water</li>
+        <li>Include human elements for scale and interest</li>
+        <li>Look for leading lines in the architecture</li>
+      </ul>
+
+      <blockquote>
+        <p>"The key to capturing Santorini's magic is patience and timing. The perfect shot often comes when you least expect it."</p>
+      </blockquote>
+
+      <h2>Best Times to Visit</h2>
+      <p>
+        For photography, the shoulder seasons (April-May and September-October) offer the best combination of good weather, fewer crowds, and beautiful light. The famous Santorini sunset is spectacular year-round, but these months provide more comfortable shooting conditions.
+      </p>
+
+      <h2>Essential Camera Gear</h2>
+      <ul>
+        <li>Wide-angle lens (16-35mm)</li>
+        <li>Mid-range zoom (24-70mm)</li>
+        <li>Polarizing filter</li>
+        <li>Neutral density filters</li>
+        <li>Sturdy tripod</li>
+      </ul>
+
+      <h2>Conclusion</h2>
+      <p>
+        While Santorini's most famous spots are popular for a reason, don't be afraid to explore beyond them. Some of the most Instagram-worthy shots come from unexpected angles and lesser-known locations. Remember to respect local residents and property while photographing, and always ask permission when shooting in private areas.
+      </p>
+    </div>
+  </article>
+</Layout>

@@ -1,0 +1,107 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import CategoryHero from '../../components/CategoryHero.astro';
+import DestinationCard from '../../components/DestinationCard.astro';
+
+const title = "Travel Guides";
+const description = "Comprehensive guides to help you plan your perfect photography adventure.";
+
+const categories = [
+  {
+    title: "City Guides",
+    description: "Expert tips for urban photography and exploration",
+    image: "https://images.unsplash.com/photo-1572573309811-48474d1891b7",
+    href: "/travel-guides/city"
+  },
+  {
+    title: "Nature Escapes",
+    description: "Guides to capturing Earth's most beautiful landscapes",
+    image: "https://images.unsplash.com/photo-1675154092378-1ca4978ec6a5",
+    href: "/travel-guides/nature"
+  },
+  {
+    title: "Cultural Experiences",
+    description: "Document authentic cultural moments and festivals",
+    image: "https://images.unsplash.com/photo-1595039838779-f3780873afdd",
+    href: "/travel-guides/culture"
+  }
+];
+
+const featuredGuides = [
+  {
+    title: "Tokyo After Dark",
+    description: "A photographer's guide to capturing the neon city.",
+    image: "https://images.unsplash.com/photo-1523474438810-b04a2480633c",
+    href: "/travel-guides/city/tokyo",
+    location: "Japan"
+  },
+  {
+    title: "Bali's Waterfalls",
+    description: "Discover hidden cascades and perfect photo opportunities.",
+    image: "https://images.unsplash.com/photo-1675154092378-1ca4978ec6a5",
+    href: "/travel-guides/nature/bali-waterfalls",
+    location: "Indonesia"
+  },
+  {
+    title: "Morocco's Markets",
+    description: "Capturing the vibrant colors of Marrakech's souks.",
+    image: "https://images.unsplash.com/photo-1532295454114-d7bc89024613",
+    href: "/travel-guides/culture/morocco",
+    location: "Morocco"
+  },
+  {
+    title: "Swiss Alps",
+    description: "Photography guide to Switzerland's mountain landscapes.",
+    image: "https://images.unsplash.com/photo-1531986362435-16b427eb9c26",
+    href: "/travel-guides/nature/swiss-alps",
+    location: "Switzerland"
+  }
+];
+---
+
+<Layout title={title} description={description}>
+  <CategoryHero
+    title={title}
+    description={description}
+    image="https://images.unsplash.com/photo-1542086490-11a8654691d0"
+  />
+
+  <!-- Categories Section -->
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold mb-8">Explore Categories</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {categories.map(category => (
+          <a 
+            href={category.href}
+            class="group relative h-64 rounded-lg overflow-hidden"
+          >
+            <img
+              src={`${category.image}?w=600&q=80&auto=format&fit=crop`}
+              alt={category.title}
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent">
+              <div class="absolute bottom-0 p-6">
+                <h3 class="text-xl font-bold text-white mb-2">{category.title}</h3>
+                <p class="text-gray-200 text-sm">{category.description}</p>
+              </div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Guides -->
+  <section class="py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold mb-8">Featured Guides</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+        {featuredGuides.map(guide => (
+          <DestinationCard {...guide} />
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
